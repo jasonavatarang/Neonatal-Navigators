@@ -1,0 +1,45 @@
+.leftbranch-container {
+    text-align: center;
+    width: 100%;
+}
+
+.title {
+    top: 5%;
+}
+
+.info-box {
+    width: 100%;
+    margin: auto;
+    margin-top: 5%;
+    border: 5px solid black;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    font-size: 1.5rem;
+    padding-top: 10%;
+    box-sizing: border-box; /* Ensures padding doesn't overflow */
+}
+
+/* Media Query for Small Screens */
+@media (max-width: 768px) {
+    .info-box {
+        font-size: 1.2rem; /* Adjust font size to prevent overflow */
+        padding-top: 15%; /* Adjust padding for smaller screens */
+    }
+
+    .title h1 {
+        font-size: 1.5rem; /* Adjust title font size */
+    }
+}
+
+/* Media Query for Extra Small Screens (Mobile) */
+@media (max-width: 480px) {
+    .info-box {
+        font-size: 1rem; /* Make text smaller on very small screens */
+        padding-top: 20%; /* Adjust padding for mobile screens */
+    }
+
+    .title h1 {
+        font-size: 1.2rem; /* Smaller font for the title on small screens */
+    }
+}

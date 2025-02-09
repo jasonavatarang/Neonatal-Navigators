@@ -1,0 +1,55 @@
+.home-container {
+    text-align: center;
+    padding-top: 10px; /* Adjust to bring the title closer to the top */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Align items to the top of the container */
+    align-items: center; /* Center horizontally */
+    height: 100vh; /* Full height to maintain responsiveness */
+}
+
+.home-title {
+    position: relative;
+    top: 0; /* Keep it at the top */
+    font-size: 1.5rem;
+    margin-top: 0; /* Remove any extra space at the top */
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    width: 50%;
+    gap: 15%; /* Space between buttons */
+    margin-top: 20%; /* Keep some space between the title and buttons */
+}
+
+.button-group button {
+    padding: 20px 40px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+/* Media Queries for Tablets and Small Screens */
+@media (max-width: 768px) {
+    .home-title {
+        font-size: 1rem; /* Adjust title size for smaller screens */
+    }
+
+    .button-group button {
+        padding: 15px 30px;
+        font-size: 1.2rem;
+    }
+}
+
+/* Media Queries for Mobile Devices */
+@media (max-width: 480px) {
+    .home-title {
+        font-size: 0.75rem; /* Even smaller title for mobile */
+    }
+
+    .button-group button {
+        padding: 10px 20px;
+        font-size: 1.2rem;
+    }
+}

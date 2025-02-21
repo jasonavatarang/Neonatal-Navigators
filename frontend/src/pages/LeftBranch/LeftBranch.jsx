@@ -1,3 +1,5 @@
+
+import React from "react";  // Add this line
 import "./LeftBranch.css";
 
 export default function LeftBranch() {

@@ -1,3 +1,4 @@
+import React from "react";  // Add this line
 import { useNavigate } from "react-router-dom";
 import "./LandingPage.css"; // Import the CSS directly
 
@@ -9,7 +10,7 @@ export default function LandingPage() {
             <div className="landing-page-title">
                 <h1>Welcome to NeoCare</h1>
             </div>
-            <button className="enter-button" onClick={() => navigate("/Home")}>
+            <button className="enter-button" onClick={() => navigate("/home")}>
                 Enter
             </button>
         </div>

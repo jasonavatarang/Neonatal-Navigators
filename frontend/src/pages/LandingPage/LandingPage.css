@@ -10,15 +10,23 @@
 .landing-page-title {
     position: absolute;
     top: 5%;
-    font-size: 2rem; /* Adjust the title size */
+    font-size: 1.5rem; /* Adjust the title size */
+}
+
+.landing-page-info {
+    width: 85%;
+    font-size: 1.2rem;
 }
 
 .enter-button {
-    padding: 20px 40px;
-    border-radius: 5px;
-    font-size: 1.5rem;
+    width: 25%;
+    height: 10%;
+    border-radius: 10px;
+    font-size: 1.1rem;
     cursor: pointer;
     margin-top: 10%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
 }
 
 /* Media Queries for Tablets and Small Screens */
@@ -28,29 +36,39 @@
     }
 
     .landing-page-title {
-        font-size: 1.5rem; /* Smaller title size */
+        font-size: 1.3rem; /* Smaller title size */
         top: 10%; /* Adjust title position */
     }
 
+    .landing-page-info {
+        font-size: 1.1rem;
+    }
+
     .enter-button {
-        padding: 15px 30px;
-        font-size: 1.4rem; /* Make the button larger */
+        font-size: 1rem; /* Make the button larger */
+        width: 40%; /* Adjust button width */
     }
 }
 
 /* Media Queries for Mobile Devices */
-@media (max-width: 480px) {
+@media (max-width: 468px) {
     .container {
         padding-top: 10px; /* Reduce padding */
     }
 
     .landing-page-title {
-        font-size: 1.2rem; /* Even smaller title for very small screens */
+        font-size: 1.1rem; /* Even smaller title for very small screens */
         top: 15%; /* Adjust title positioning */
     }
 
+    .landing-page-info {
+        width: 85%;
+        
+        font-size: 1rem;
+    }
+
     .enter-button {
-        padding: 10px 20px; /* Increase button padding */
-        font-size: 1.2rem; /* Increase button font size */
+        width: 50%; /* Adjust button width */
+        font-size: .9rem; /* Increase button font size */
     }
 }

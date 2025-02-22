@@ -12,8 +12,8 @@ export default function Home() {
             </div>
             <div className="button-group">
                 <button onClick={() => navigate("/leftbranch")}>≤ 32 weeks</button>
-                <button onClick={() => navigate("/33-35-weeks")}>33-35 weeks</button>
-                <button onClick={() => navigate("/36-weeks")}>≥ 36 weeks</button>
+                <button onClick={() => navigate("/midbranch")}>33-35 weeks</button>
+                <button onClick={() => navigate("/rightbranch")}>≥ 36 weeks</button>
             </div>
         </div>
     );

@@ -1,6 +1,6 @@
-import React from "react";  // Add this line
+import React from "react"; 
 import { useNavigate } from "react-router-dom";
-import "./LandingPage.css"; // Import the CSS directly
+import "./LandingPage.css"; 
 
 export default function LandingPage() {
     const navigate = useNavigate();
@@ -10,8 +10,17 @@ export default function LandingPage() {
             <div className="landing-page-title">
                 <h1>Welcome to NeoCare</h1>
             </div>
+            <div className="landing-page-info">
+                <p>
+                    This site provides educational materials on neonatal neuroprotection, guiding you through the evaluation of neonates for appropriate neuroprotection interventions based on their gestational age.
+                </p>
+                <p>
+                Specifically, these educational materials will include best practices for preventing intraventricular hemorrhages in preterm neonates and guidelines for identifying neonates at 35 weeks’ gestation or later who may be candidates for therapeutic hypothermia.
+                </p>
+            </div>
+
             <button className="enter-button" onClick={() => navigate("/home")}>
-                Enter
+            Begin neuroprotective <br /> intervention evaluation
             </button>
         </div>
     );

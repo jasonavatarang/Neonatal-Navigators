@@ -1,0 +1,51 @@
+
+.right-branch-container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%; /* Fixes overflow on large screens */
+    max-width: 1200px; /* Prevents it from becoming too wide */
+    margin: 0 auto; /* Centers the content */
+}
+
+.right-branch-top-container {
+    width: 90%;
+    margin-top: 5%;
+    border: 3px solid black;
+    border-radius: 10px;
+    background-color: white;
+    align-items: flex-start;
+    justify-content: center;
+    font-size: 1.5rem;
+    box-sizing: border-box; /* Ensures padding doesn't overflow */
+}
+
+.protocol-image {
+    margin-top: 5%;
+    max-width: 100%; /* Prevents image from overflowing */
+    width: 90%; /* Keeps it at 60% of the container width initially */
+    height: auto; /* Maintains aspect ratio */
+    border: 3px solid black;
+}
+
+.exclusion-criteria {
+    margin-top: 2%;
+    max-width: 100%; /* Prevents image from overflowing */
+    width: 90%; /* Keeps it at 60% of the container width initially */
+    height: auto; /* Maintains aspect ratio */
+    border: 3px solid black;
+}
+
+
+/* Media Queries for Mobile Devices */
+@media (max-width: 768px) {
+    .protocol-image {
+    }
+}
+
+@media (max-width: 468px) {
+    .protocol-image {
+    }
+}

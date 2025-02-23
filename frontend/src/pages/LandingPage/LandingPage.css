@@ -14,6 +14,10 @@
 }
 
 .landing-page-info {
+    background-color: white;
+    padding: 40px 10px;
+    border: 2px solid black;
+    border-radius: 10px;
     width: 85%;
     font-size: 1.2rem;
 }
@@ -53,12 +57,12 @@
 /* Media Queries for Mobile Devices */
 @media (max-width: 468px) {
     .container {
-        padding-top: 10px; /* Reduce padding */
+        
     }
 
     .landing-page-title {
         font-size: 1.1rem; /* Even smaller title for very small screens */
-        top: 15%; /* Adjust title positioning */
+        top: 10%; /* Adjust title positioning */
     }
 
     .landing-page-info {

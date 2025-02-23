@@ -11,7 +11,7 @@
 }
 
 .right-branch-top-container {
-    width: 90%;
+    width: 80%;
     margin-top: 5%;
     border: 3px solid black;
     border-radius: 10px;
@@ -25,7 +25,7 @@
 .protocol-image {
     margin-top: 5%;
     max-width: 100%; /* Prevents image from overflowing */
-    width: 90%; /* Keeps it at 60% of the container width initially */
+    width: 80%; /* Keeps it at 60% of the container width initially */
     height: auto; /* Maintains aspect ratio */
     border: 3px solid black;
 }
@@ -33,7 +33,7 @@
 .exclusion-criteria {
     margin-top: 2%;
     max-width: 100%; /* Prevents image from overflowing */
-    width: 90%; /* Keeps it at 60% of the container width initially */
+    width: 80%; /* Keeps it at 60% of the container width initially */
     height: auto; /* Maintains aspect ratio */
     border: 3px solid black;
 }

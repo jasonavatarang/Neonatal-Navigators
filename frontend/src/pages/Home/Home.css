@@ -8,6 +8,8 @@ body, html {
     flex-direction: column;
     align-items: center;
     background: linear-gradient(to bottom, #6092A6, #CEECF2);
+    background-size: 100% 100%; /* Prevent gradient from repeating */
+    background-attachment: fixed; /* Prevent background from repeating when scrolling */
     font-family: Arial, sans-serif;
 }
 
@@ -19,7 +21,7 @@ body, html {
     flex-direction: column;
     justify-content: flex-start; /* Align items to the top */
     align-items: center;
-    height: 100vh; /* Full height to maintain responsiveness */
+    min-height: 100vh; /* Ensure the container takes at least full viewport height */
 }
 
 /* Title styling */

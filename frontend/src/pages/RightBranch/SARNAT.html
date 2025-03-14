@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sarnat Test for HIE</title>
+    <script>
+        function calculateScore() {
+            let score = 0;
+            let levels = document.getElementsByName('level_of_consciousness');
+            let activity = document.getElementsByName('spontaneous_activity');
+            let posture = document.getElementsByName('posture');
+            let tone = document.getElementsByName('tone');
+            let suck = document.getElementsByName('suck');
+            let moro = document.getElementsByName('moro');
+            let pupils = document.getElementsByName('pupils');
+            let heartRate = document.getElementsByName('heart_rate');
+            let respirations = document.getElementsByName('respirations');
+
+            function getValue(radioGroup) {
+                for (let i = 0; i < radioGroup.length; i++) {
+                    if (radioGroup[i].checked) {
+                        return parseInt(radioGroup[i].value);
+                    }
+                }
+                return 0;
+            }
+
+            let levelScore = getValue(levels);
+
+            let activityScore = getValue(activity);
+
+            let postureScore = getValue(posture);
+
+            let toneScore = getValue(tone);
+
+            let suckScore = getValue(suck);
+            let moroScore = getValue(moro);
+            let reflexScore = Math.max(moroScore, suckScore);
+
+            let pupilScore = getValue(pupils);
+            let heartScore = getValue(heartRate);
+            let respScore = getValue(respirations);
+            let autoScore = Math.max(pupilScore, heartScore, respScore);
+
+            let normEnceph = 0;
+            let modEnceph = 0;
+            let sevEnceph = 0;
+
+            if (levelScore == 0) normEnceph++;
+            else if (levelScore == 1) modEnceph++;
+            else sevEnceph++;
+
+            if (activityScore == 0) normEnceph++;
+            else if (activityScore == 1) modEnceph++;
+            else sevEnceph++;
+
+            if (postureScore == 0) normEnceph++;
+            else if (postureScore == 1) modEnceph++;
+            else sevEnceph++;
+
+            if (toneScore == 0) normEnceph++;
+            else if (toneScore == 1) modEnceph++;
+            else sevEnceph++;
+
+            if (reflexScore == 0) normEnceph++;
+            else if (reflexScore == 1) modEnceph++;
+            else sevEnceph++;
+
+            if (autoScore == 0) normEnceph++;
+            else if (autoScore == 1) modEnceph++;
+            else sevEnceph++;
+
+            let result = "";
+            if (Math.max(normEnceph, modEnceph, sevEnceph) == sevEnceph) {
+                result = "Severe Encephalopathy";
+            }
+            else if (Math.max(normEnceph, modEnceph, sevEnceph) == modEnceph) {
+                result = "Moderate Encephalopathy";
+            }
+            else {
+                result = "Mild or No Encephalopathy";
+            }
+            document.getElementById("result").innerText = result;
+        }
+    </script>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="../styles/NeoHome.css">
+</head>
+<body>
+    <h2>Sarnat Test for HIE</h2>
+    <form>
+        <p>1. Level of Consciousness</p>
+        <input type="radio" name="level_of_consciousness" value="0"> Alert and aware
+        <input type="radio" name="level_of_consciousness" value="1"> Lethargic
+        <input type="radio" name="level_of_consciousness" value="2"> Stupor/Coma
+        
+        <p>2. Spontaneous Activity</p>
+        <input type="radio" name="spontaneous_activity" value="0"> Normal activity
+        <input type="radio" name="spontaneous_activity" value="1"> Decreased activity
+        <input type="radio" name="spontaneous_activity" value="2"> No activity
+        
+        <p>3. Posture</p>
+        <input type="radio" name="posture" value="0"> Normal posture, limbs brought in towards torso
+        <input type="radio" name="posture" value="1"> Distal flexion, complete extension, frog leg posture
+        <input type="radio" name="posture" value="2"> Decerebrate
+        
+        <p>4. Tone</p>
+        <input type="radio" name="tone" value="0"> Expected flexion with movement
+        <input type="radio" name="tone" value="1"> Hypotonia (focal/general), hypertonia (focal/truncal)
+        <input type="radio" name="tone" value="2"> Flaccid
+        
+        <p>5. Primitive Reflexes (Suck)</p>
+        <input type="radio" name="suck" value="0"> Sucks on pacifier or finger
+        <input type="radio" name="suck" value="1"> Weak or bite
+        <input type="radio" name="suck" value="2"> Absent
+        
+        <p>6. Primitive Reflexes (Moro)</p>
+        <input type="radio" name="moro" value="0"> Symmetric
+        <input type="radio" name="moro" value="1"> Incomplete
+        <input type="radio" name="moro" value="2"> Absent
+        
+        <p>7. Autonomic System (Pupils)</p>
+        <input type="radio" name="pupils" value="0"> Reactive to light
+        <input type="radio" name="pupils" value="1"> Constricted/Sluggish
+        <input type="radio" name="pupils" value="2"> Skew deviation/dilated/non-reactive to light
+        
+        <p>8. Heart Rate</p>
+        <input type="radio" name="heart_rate" value="0"> Normal heart rate
+        <input type="radio" name="heart_rate" value="1"> Bradycardia
+        <input type="radio" name="heart_rate" value="2"> Variable
+        
+        <p>9. Respirations</p>
+        <input type="radio" name="respirations" value="0"> Normal breathing
+        <input type="radio" name="respirations" value="1"> Periodic
+        <input type="radio" name="respirations" value="2"> Apnea or intubated
+        
+        <br><br>
+        <button type="button" onclick="calculateScore()">Calculate Score</button>
+    </form>
+    
+    <h3 id="result"></h3>
+</body>
+</html>

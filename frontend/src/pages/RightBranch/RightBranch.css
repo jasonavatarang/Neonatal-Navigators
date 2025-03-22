@@ -38,6 +38,40 @@
     border: 3px solid black;
 }
 
+.right-branch-sarnat-exam {
+    width: 80%;
+    margin-top: 3%;
+    border: 3px solid black;
+    background-color: white;
+    align-items: flex-start;
+    justify-content: center;
+    font-size: 1rem;
+    box-sizing: border-box; /* Ensures padding doesn't overflow */
+
+}
+
+.radio-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.radio-group p {
+    margin: 0; 
+    font-weight: bold;
+    flex-shrink: 0;
+    margin-left: 1%; 
+}
+
+.radio-buttons {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    margin-right: 1%;
+}
+
+
 
 /* Media Queries for Mobile Devices */
 @media (max-width: 768px) {

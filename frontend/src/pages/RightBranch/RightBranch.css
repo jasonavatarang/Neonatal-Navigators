@@ -1,4 +1,3 @@
-
 .right-branch-container {
     text-align: center;
     display: flex;
@@ -14,7 +13,6 @@
     width: 80%;
     margin-top: 5%;
     border: 3px solid black;
-    border-radius: 10px;
     background-color: white;
     align-items: flex-start;
     justify-content: center;
@@ -23,9 +21,9 @@
 }
 
 .protocol-image {
-    margin-top: 5%;
+    margin-top: 3%;
     max-width: 100%; /* Prevents image from overflowing */
-    width: 80%; /* Keeps it at 60% of the container width initially */
+    width: 85%; /* Keeps it at 60% of the container width initially */
     height: auto; /* Maintains aspect ratio */
     border: 3px solid black;
 }
@@ -33,13 +31,13 @@
 .exclusion-criteria {
     margin-top: 2%;
     max-width: 100%; /* Prevents image from overflowing */
-    width: 80%; /* Keeps it at 60% of the container width initially */
+    width: 85%; /* Keeps it at 60% of the container width initially */
     height: auto; /* Maintains aspect ratio */
     border: 3px solid black;
 }
 
 .right-branch-sarnat-exam {
-    width: 80%;
+    width: 90%;
     margin-top: 3%;
     border: 3px solid black;
     background-color: white;
@@ -47,30 +45,95 @@
     justify-content: center;
     font-size: 1rem;
     box-sizing: border-box; /* Ensures padding doesn't overflow */
+}
 
+.right-branch-sarnat-exam h2 {
+    text-align: left;
+    margin-left: 5px;
+}
+
+.right-branch-sarnat-exam h3 {
+    text-align: left;
+    margin-left: 20px;
+}
+
+.right-branch-sarnat-exam h4 {
+    text-align: left;
+    margin-left: 30px;
 }
 
 .radio-group {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
     gap: 10px;
+    margin: 10px 5px 10px 20px;
 }
 
 .radio-group p {
-    margin: 0; 
-    font-weight: bold;
-    flex-shrink: 0;
-    margin-left: 1%; 
+    background-color: lightgray;
+    margin: 0px 2px;
+    border: 2px solid black;
+    border-radius: 2px; 
+    flex: 1;
+    text-align: center;
+    padding: 8px 2px; /* Top and bottom padding only */
+    width: 45%; /* Restrict label width to half the screen */
+    word-wrap: break-word; /* Break long words to avoid overflow */
 }
+
 
 .radio-buttons {
     display: flex;
-    gap: 5px;
-    align-items: center;
-    margin-right: 1%;
+    justify-content: center;
+    font-size: .95rem;
+    width: 50%;
+    gap: 10px;
+    flex: 1;
 }
 
+.radio-buttons label {
+    display: inline-flex;
+    align-items: center;
+    justify-content: left;
+    width: 50%; /* Dynamically adjusts spacing */
+    margin: 0 5px;
+}
+
+.radio-buttons input[type="radio"] {
+    margin: 5px 10px;
+}
+
+.highlight-group {
+    margin-bottom: 10px;
+}
+
+.highlight-group p{
+    text-align: left;
+    margin-left: 30px;
+}
+
+.highlight-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10%;
+
+}
+
+.highlight-option {
+    padding: 10px 40px;
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color: white;
+    color: black;
+    transition: 0.3s ease;
+}
+
+.highlight-option.selected {
+    background-color: darkblue;
+    color: white;
+    border: 1px solid darkblue;
+}
 
 
 /* Media Queries for Mobile Devices */

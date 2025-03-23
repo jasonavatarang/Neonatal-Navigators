@@ -1,26 +1,52 @@
 .leftbranch-container {
     text-align: center;
-    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%; /* Fixes overflow on large screens */
+    max-width: 1200px; /* Prevents it from becoming too wide */
+    margin: 0 auto; /* Centers the content */
 }
 
 .title {
-    top: 5%;
+    width: 80%;
+    margin-top: 5%;
+    border: 3px solid black;
+    background-color: white;
+    align-items: flex-start;
+    justify-content: center;
+    font-size: 1.5rem;
+    box-sizing: border-box; /* Ensures padding doesn't overflow */
 }
 
 .info-box {
-    width: 100%;
+    width: 90%;
     margin: auto;
-    margin-top: 5%;
+    margin-top: 2%;
     border: 5px solid black;
+    background-color: white;
     display: block;
     font-size: 1.5rem;
-    padding: 10%;
+    padding: 4%;
     box-sizing: border-box;
+}
+
+.PDF-viewer {
+    width: 100%;
+    height: 100%;
+    margin-top: 5%;
+    border: 4px solid black;
+    background-color: white;
+    align-items: flex-start;
+    justify-content: center;
+    font-size: 1.5rem;
+    box-sizing: border-box; /* Ensures padding doesn't overflow */
 }
 
 /* Style the paragraph (p) */
 .info-box p {
-    margin-bottom: 20px;
+    
 }
 
 /* Style the unordered list (ul) */

@@ -40,7 +40,7 @@ export default function LeftBranch() {
     return (
         <div className="leftbranch-container">
             <div className="title">
-                <h1>≤ 32 Weeks Procedure</h1>
+                <h1>Implementation of GMH-IVH Bundle</h1>
             </div>
             <div className="info-box">
                 <h1>Pathophysiology of GMH-IVH:</h1>

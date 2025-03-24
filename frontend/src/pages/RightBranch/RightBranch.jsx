@@ -4,56 +4,85 @@ import "./RightBranch.css";
 export default function RightBranch() {
     const [result, setResult] = useState("");
     const [Ph, setPh] = useState("");
-    const [BaseDeficit, setBaseDeficit] = useState("");
+    const [BaseDeficit, setBaseDeficit] = useState(""); 
+    const [criteria, setCriteria] = useState({
+        gestational_age: "",
+        birth_weight: "",
+        time_since_insult: "",
+        acute_perinatal_event: "",
+        apgar_assisted_ventilation: "",
+        has_seizures: "",
+        signs_of_encephalopathy: 0,
+        encephalopathy_details: {} // New state to store part 5 answers
+    });
+    
 
     const calculateScore = () => {
-        const getValue = (name) => {
-            const radios = document.getElementsByName(name);
-            for (let i = 0; i < radios.length; i++) {
-                if (radios[i].checked) {
-                    return parseInt(radios[i].value);
-                }
+        const predictorA = parseFloat(Ph) <= 7.0 && parseFloat(BaseDeficit) >= 16;
+        const predictorB = parseFloat(Ph) >= 7.01 && parseFloat(Ph) <= 7.15 && parseFloat(BaseDeficit) >= 10 && parseFloat(BaseDeficit) <= 15.9;
+        const predictorC = criteria.acute_perinatal_event == "0" && criteria.apgar_assisted_ventilation == "0";
+        const predictorMet = predictorA || predictorB || predictorC;
+
+        const hasSeizuresOrThreeSigns = criteria.has_seizures == "0" || criteria.signs_of_encephalopathy >= 3;
+
+        const qualifies =
+            criteria.gestational_age == "0" &&
+            criteria.birth_weight == "0" &&
+            criteria.time_since_insult == "0" &&
+            predictorMet &&
+            hasSeizuresOrThreeSigns;
+
+            let part5Criteria = "";
+            for (const [key, value] of Object.entries(criteria.encephalopathy_details)) {
+                part5Criteria += `${key.replace(/_/g, " ")}: ${value}\n`;
             }
-            return 0;
+            
+            /*
+           let criteriaSummary = `
+            Gestational Age: ${criteria.gestational_age == "0"}\n
+            Birth Weight: ${criteria.birth_weight == "0"}\n
+            Time Since Insult: ${criteria.time_since_insult == "0"}\n
+            Acute Perinatal Event: ${criteria.acute_perinatal_event}\n
+            APGAR Assisted Ventilation: ${criteria.apgar_assisted_ventilation}\n
+            Acute Perinatal Event: ${criteria.acute_perinatal_event}\n
+            APGAR Assisted Ventilation: ${criteria.apgar_assisted_ventilation}\n
+            pH: ${Ph}\n
+            Base Deficit: ${BaseDeficit}\n
+            predictorMet: ${predictorMet}\n
+            Number of Encephalopathy Signs: ${criteria.signs_of_encephalopathy}\n
+            hasSeizuresOrThreeSigns: ${hasSeizuresOrThreeSigns}\n
+           `;
+                */
+            setResult(`${qualifies ? "Neonate qualifies for Systemic Hypothermia" : "Neonate does not qualify for Systemic Hypothermia"}`);
         };
 
-        const levelScore = getValue("level_of_consciousness");
-        const activityScore = getValue("spontaneous_activity");
-        const postureScore = getValue("posture");
-        const toneScore = getValue("tone");
-        const suckScore = getValue("suck");
-        const moroScore = getValue("moro");
-        const reflexScore = Math.max(suckScore, moroScore);
-        const pupilScore = getValue("pupils");
-        const heartScore = getValue("heart_rate");
-        const respScore = getValue("respirations");
-        const autoScore = Math.max(pupilScore, heartScore, respScore);
-
-        let normEnceph = 0;
-        let modEnceph = 0;
-        let sevEnceph = 0;
-
-        const categorize = (score) => {
-            if (score === 0) normEnceph++;
-            else if (score === 1) modEnceph++;
-            else sevEnceph++;
+        const handleRadioChange = (name, value) => {
+            setCriteria((prev) => {
+                const newCriteria = { ...prev, [name]: value };
+                
+                if ([
+                    "level_of_consciousness",
+                    "spontaneous_activity",
+                    "posture",
+                    "tone",
+                    "suck",
+                    "moro",
+                    "pupils",
+                    "heart_rate",
+                    "respirations"
+                ].includes(name)) {
+                    const isSignPresent = value === 0;
+                    newCriteria.encephalopathy_details[name] = isSignPresent ? "Moderate" : "Severe";
+        
+                    // Count the number of signs present (value === 0)
+                    const numSigns = Object.values(newCriteria.encephalopathy_details).filter((v) => v === "Moderate" || v == "Severe").length;
+                    newCriteria.signs_of_encephalopathy = numSigns;
+                }
+        
+                return newCriteria;
+            });
         };
-
-        categorize(levelScore);
-        categorize(activityScore);
-        categorize(postureScore);
-        categorize(toneScore);
-        categorize(reflexScore);
-        categorize(autoScore);
-
-        if (sevEnceph >= Math.max(normEnceph, modEnceph)) {
-            setResult("Severe Encephalopathy");
-        } else if (modEnceph >= Math.max(normEnceph, sevEnceph)) {
-            setResult("Moderate Encephalopathy");
-        } else {
-            setResult("Mild or No Encephalopathy");
-        }
-    };
+        
 
     const renderRadioGroup = (name, label, options) => (
         <div className="radio-group">
@@ -61,7 +90,7 @@ export default function RightBranch() {
             <div className="radio-buttons">
                 {options.map((option, index) => (
                     <label key={index}>
-                        <input type="radio" name={name} value={index} /> {option}
+                        <input type="radio" name={name} value={index} onChange={(e) => handleRadioChange(name, parseInt(e.target.value))} /> {option}
                     </label>
                 ))}
             </div>
@@ -158,6 +187,7 @@ export default function RightBranch() {
                             <p>Left Indicates Moderate | Right Indicates Severe.</p>
                         </div>
                     </div>
+                    {renderRadioGroup("has_seizures", "Does the neonate have seizures?", ["Yes", "No"]) }
                     {renderRadioGroup("level_of_consciousness", "Level of Consciousness", ["Lethargic", "Stupor / Coma"])}
                     {renderRadioGroup("spontaneous_activity", "Spontaneous Activity", ["Decreased", "No Activity"])}
                     {renderRadioGroup("posture", "Posture", ["Distal Flexion / Extension", "Decerebrate"])}
@@ -168,7 +198,7 @@ export default function RightBranch() {
                     {renderRadioGroup("heart_rate", "Heart Rate", ["Bradycardia", "Variable"])}
                     {renderRadioGroup("respirations", "Respirations", ["Periodic", "Apnea/Intubated"])}
                 </div>
-            <button onClick={calculateScore}>Calculate Score</button>
+            <button onClick={calculateScore}>Summarize Results</button>
             <h3>{result}</h3>
             </div>
         </div>

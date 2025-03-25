@@ -105,41 +105,7 @@ export default function LandingLeftBranch() {
                     </li>
                 </ul>
             </div>
-            <div className="info-box">
-                <h1>Components of the GMH-IVH bundle:</h1>
-                <ol>
-                    <li>
-                        Delayed cord clamping
-                    </li>
-                    <li>
-                        Placement of the neonates in the Transportle head positioner
-                    </li>
-                    <li>
-                        Head in a midline position
-                    </li>
-                    <li>
-                        Minimal stimulation
-                    </li>
-                    <li>
-                        Avoidance of fluid boluses
-                    </li>
-                </ol>
-            </div>
-            <div className="info-box">
-                <h1>NeoCare Guide (Info Unavailable currently)</h1>
-                
-            </div>
-            {/* Youtube Video */}
-            <div className="video-container">
-                <div className="video-wrapper">
-                    <iframe
-                        src="https://www.youtube.com/embed/bztzID_JxGY?si=fIJ44fAXbMDQl1o1"
-                        title="YouTube video player"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                    ></iframe>
-                </div>
-            </div>
+           
 
         </div>
     );

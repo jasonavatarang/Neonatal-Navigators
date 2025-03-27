@@ -178,6 +178,7 @@ export default function RightBranch() {
                 {renderRadioGroup("apgar_assisted_ventilation", "APGAR ≤ 5 at 10 minutes or assisted ventilation at birth required ≥ 10 minutes", ["Yes", "No"])}
 
                 <h2>5. Has seizures or 3 of 6 of the following signs of Encephalopathy:</h2>
+                {renderRadioGroup("has_seizures", "Does the neonate have seizures?", ["Yes", "No"]) }
                 <div className="part-5-container">
                     <div className="part-5-description-container">
                         <div className="part-5-description-left">
@@ -187,16 +188,15 @@ export default function RightBranch() {
                             <p>Left Indicates Moderate | Right Indicates Severe.</p>
                         </div>
                     </div>
-                    {renderRadioGroup("has_seizures", "Does the neonate have seizures?", ["Yes", "No"]) }
-                    {renderRadioGroup("level_of_consciousness", "Level of Consciousness", ["Lethargic", "Stupor / Coma"])}
-                    {renderRadioGroup("spontaneous_activity", "Spontaneous Activity", ["Decreased", "No Activity"])}
-                    {renderRadioGroup("posture", "Posture", ["Distal Flexion / Extension", "Decerebrate"])}
-                    {renderRadioGroup("tone", "Tone", ["Hypotonia / Hypertonia", "Flaccid"])}
-                    {renderRadioGroup("suck", "Primitive Reflexes (Suck)", ["Weak/Bite", "Absent"])}
-                    {renderRadioGroup("moro", "Primitive Reflexes (Moro)", ["Incomplete", "Absent"])}
-                    {renderRadioGroup("pupils", "Autonomic System (Pupils)", ["Constricted", "Skew / Non-reactive"])}
-                    {renderRadioGroup("heart_rate", "Heart Rate", ["Bradycardia", "Variable"])}
-                    {renderRadioGroup("respirations", "Respirations", ["Periodic", "Apnea/Intubated"])}
+                    {renderRadioGroup("level_of_consciousness", "Level of Consciousness", ["Normal","Lethargic", "Stupor / Coma"])}
+                    {renderRadioGroup("spontaneous_activity", "Spontaneous Activity", ["Normal","Decreased", "No Activity"])}
+                    {renderRadioGroup("posture", "Posture", ["Normal", "Distal Flexion / Extension", "Decerebrate"])}
+                    {renderRadioGroup("tone", "Tone", ["Normal", "Hypotonia / Hypertonia", "Flaccid"])}
+                    {renderRadioGroup("suck", "Primitive Reflexes (Suck)", ["Normal", "Weak/Bite", "Absent"])}
+                    {renderRadioGroup("moro", "Primitive Reflexes (Moro)", ["Normal", "Incomplete", "Absent"])}
+                    {renderRadioGroup("pupils", "Autonomic System (Pupils)", ["Normal", "Constricted", "Skew / Non-reactive"])}
+                    {renderRadioGroup("heart_rate", "Heart Rate", ["Normal", "Bradycardia", "Variable"])}
+                    {renderRadioGroup("respirations", "Respirations", ["Normal", "Periodic", "Apnea/Intubated"])}
                 </div>
             <button onClick={calculateScore}>Summarize Results</button>
             <h3>{result}</h3>

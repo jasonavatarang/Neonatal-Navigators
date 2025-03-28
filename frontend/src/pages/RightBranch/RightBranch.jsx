@@ -39,9 +39,9 @@ export default function RightBranch() {
             predictorMet &&
             hasSeizuresOrThreeSigns;
 
-        let summaryText = `The Sarnat exam results indicate that the neonate ${qualifies ? "qualifies" : "does not qualify"} for Systemic Hypothermia.<br /><br />`;
+            let summaryText = `The Sarnat exam results indicate that the neonate <b>${qualifies ? "qualifies" : "does not qualify"}</b> for Systemic Hypothermia.<br /><br />`;
         
-        if (predictorMet) {
+        if (predictorMet && hasSeizuresOrThreeSigns) {
             summaryText += `The predictors that justify this are:<br />`;
             
             if (predictorA) {
@@ -164,7 +164,7 @@ export default function RightBranch() {
             <div className="right-branch-sarnat-exam">
                 <h1>Simple Sarnat Exam</h1>
                 <h2>A neonate must meet all 5 criteria to qualify for Systemic Hypothermia</h2>
-
+                <br></br>
                 <h2>1. Gestational Age</h2>
                 {renderRadioGroup("gestational_age", "Is the gestational age of the neonate ≥ 35 weeks?", ["Yes", "No"])}
                 
@@ -228,13 +228,16 @@ export default function RightBranch() {
                             <p>Normal | Moderate | Severe</p> {/* Updated to reflect new order */}
                         </div>
                     </div>
+                    <h3>General</h3>
                     {renderRadioGroup("level_of_consciousness", "Level of Consciousness", ["Normal", "Lethargic", "Stupor/Coma"])}
                     {renderRadioGroup("spontaneous_activity", "Spontaneous Activity", ["Normal", "Decreased", "No Activity"])}
                     {renderRadioGroup("posture", "Posture", ["Normal", "Distal Flexion/Extension", "Decerebrate"])}
                     {renderRadioGroup("tone", "Tone", ["Normal", "Hypotonia/Hypertonia", "Flaccid"])}
-                    {renderRadioGroup("suck", "Primitive Reflexes (Suck)", ["Normal", "Weak/Bite", "Absent"])}
-                    {renderRadioGroup("moro", "Primitive Reflexes (Moro)", ["Normal", "Incomplete", "Absent"])}
-                    {renderRadioGroup("pupils", "Autonomic System (Pupils)", ["Normal", "Constricted", "Skew/Non-reactive"])}
+                    <h3>Primitive Reflexes</h3>
+                    {renderRadioGroup("suck", "Suck", ["Normal", "Weak/Bite", "Absent"])}
+                    {renderRadioGroup("moro", "Moro", ["Normal", "Incomplete", "Absent"])}
+                    <h3>Autonomic System</h3>
+                    {renderRadioGroup("pupils", "Pupils", ["Normal", "Constricted", "Skew/Non-reactive"])}
                     {renderRadioGroup("heart_rate", "Heart Rate", ["Normal", "Bradycardia", "Variable"])}
                     {renderRadioGroup("respirations", "Respirations", ["Normal", "Periodic", "Apnea/Intubated"])}
                 </div>

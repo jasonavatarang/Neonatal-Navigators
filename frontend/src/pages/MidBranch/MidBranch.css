@@ -1,0 +1,17 @@
+.middle-branch-container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%; /* Fixes overflow on large screens */
+    margin: 0 auto; /* Centers the content */
+}
+
+.middle-branch-wide-box {
+    width: 90%; /* Takes 90% of the parent container, up to 1080px at 1200px max-width */
+    border: 3px solid black; /* Visible box outline */
+    background-color: white; /* Solid background */
+    padding: 20px; /* Internal spacing */
+    box-sizing: border-box; /* Ensures padding/border fit within width */
+}

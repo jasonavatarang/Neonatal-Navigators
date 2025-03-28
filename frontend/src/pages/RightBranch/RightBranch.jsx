@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react"; // Add useEffect to imports
 import "./RightBranch.css";
 
 export default function RightBranch() {
@@ -17,6 +17,13 @@ export default function RightBranch() {
         encephalopathy_details: {}
     });
 
+    // Add useEffect to scroll to bottom when summary updates
+    useEffect(() => {
+        if (summary) {
+            window.scrollTo(0, document.body.scrollHeight);
+        }
+    }, [summary]); // Runs whenever summary changes
+
     const calculateScore = () => {
         const predictorA = parseFloat(Ph) <= 7.0 && parseFloat(BaseDeficit) >= 16;
         const predictorB = parseFloat(Ph) >= 7.01 && parseFloat(Ph) <= 7.15 && parseFloat(BaseDeficit) >= 10 && parseFloat(BaseDeficit) <= 15.9;
@@ -31,28 +38,28 @@ export default function RightBranch() {
             criteria.time_since_insult === "0" &&
             predictorMet &&
             hasSeizuresOrThreeSigns;
-    
+
         let summaryText = `The Sarnat exam results indicate that the neonate ${qualifies ? "qualifies" : "does not qualify"} for Systemic Hypothermia.<br /><br />`;
         
-        if (predictorMet){
-        summaryText += `The predictors that justify this are:<br />`;
-        
-        if (predictorA) {
-            summaryText += `Predictor A - pH is ≤ 7.0 with base deficit ≥ 16<br />`;
-        } else if (predictorB) {
-            summaryText += `Predictor B - pH is 7.01–7.15 with base deficit 10–15.9<br />`;
-        }
-    
-        if (predictorC) {
-            if (predictorA || predictorB) {
-                summaryText += `AND<br />`;
+        if (predictorMet) {
+            summaryText += `The predictors that justify this are:<br />`;
+            
+            if (predictorA) {
+                summaryText += `Predictor A - pH is ≤ 7.0 with base deficit ≥ 16<br />`;
+            } else if (predictorB) {
+                summaryText += `Predictor B - pH is 7.01–7.15 with base deficit 10–15.9<br />`;
             }
-            summaryText += `APGAR ≤ 5 at 10 minutes or assisted ventilation at birth required ≥ 10 minutes<br />`;
-        } else if (!predictorA && !predictorB) {
-            summaryText += `None<br />`;
+        
+            if (predictorC) {
+                if (predictorA || predictorB) {
+                    summaryText += `AND<br />`;
+                }
+                summaryText += `APGAR ≤ 5 at 10 minutes or assisted ventilation at birth required ≥ 10 minutes<br />`;
+            } else if (!predictorA && !predictorB) {
+                summaryText += `None<br />`;
+            }
         }
-    }
-    
+
         summaryText += `<h4>Signs of Encephalopathy:</h4>`;
         summaryText += `${criteria.has_seizures === "0" ? "The neonate has seizures<br />" : ""}`;
         const encephalopathySigns = Object.entries(criteria.encephalopathy_details)
@@ -62,15 +69,14 @@ export default function RightBranch() {
                 const signValue = criteria[key] === "1" ? optionsMap[key][1] : optionsMap[key][2]; // Moderate is 1, Severe is 2
                 return `Neonate's ${signName} is ${signValue} (${value} sign of Encephalopathy)`;
             });
-    
+
         if (encephalopathySigns.length > 0) {
             summaryText += encephalopathySigns.join("<br />");
         } else {
             summaryText += "";
         }
-    
 
-        setSummary(summaryText);
+        setSummary(summaryText); // Scroll will happen in useEffect
     };
 
     // Add optionsMap

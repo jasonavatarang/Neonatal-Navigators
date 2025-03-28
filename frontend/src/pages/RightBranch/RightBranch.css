@@ -231,6 +231,12 @@
     margin: 2%;
 }
 
+.summary-section h1 {
+    text-align: center; /* Align the "Summary" header left */
+    margin-bottom: 20px;
+    
+}
+
 .summary-section h3 {
     text-align: left; /* Align the "Summary" header left */
     margin-left: 10px;
@@ -238,13 +244,13 @@
 
 .summary-section h4 {
     text-align: left; /* Align "Signs of Encephalopathy" header left */
-    margin-left: 0; /* Remove indent to align with other text */
+    margin-left: -10px; /* Remove indent to align with other text */
     margin-bottom: 10px;
-    margin-left: 10px;
+   
 }
 
 .summary-section p{
-    margin-left: 10px; /* Indent summary text */
+    margin-left: 30px; /* Indent summary text */
 } 
 
 /* Media Queries for Mobile Devices */

@@ -41,20 +41,20 @@ export default function RightBranch() {
 
             let summaryText = `The Sarnat exam results indicate that the neonate <b>${qualifies ? "qualifies" : "does not qualify"}</b> for Systemic Hypothermia.<br /><br />`;
         
-        if (predictorMet && hasSeizuresOrThreeSigns) {
+        if (predictorMet && qualifies ) {
             summaryText += `The predictors that justify this are:<br />`;
             
             if (predictorA) {
-                summaryText += `Predictor A - pH is ≤ 7.0 with base deficit ≥ 16<br />`;
+                summaryText += `• Predictor A - pH is ≤ 7.0 with base deficit ≥ 16<br />`;
             } else if (predictorB) {
-                summaryText += `Predictor B - pH is 7.01–7.15 with base deficit 10–15.9<br />`;
+                summaryText += `• Predictor B - pH is 7.01–7.15 with base deficit 10–15.9<br />`;
             }
         
             if (predictorC) {
                 if (predictorA || predictorB) {
-                    summaryText += `AND<br />`;
+                    summaryText += `<b>AND</b><br />`;
                 }
-                summaryText += `APGAR ≤ 5 at 10 minutes or assisted ventilation at birth required ≥ 10 minutes<br />`;
+                summaryText += `• Predictor C - APGAR ≤ 5 at 10 minutes or assisted ventilation at birth required ≥ 10 minutes<br />`;
             } else if (!predictorA && !predictorB) {
                 summaryText += `None<br />`;
             }
@@ -244,7 +244,7 @@ export default function RightBranch() {
                 <button onClick={calculateScore}>Summarize Results</button>
                 {summary && (
                     <div className="summary-section">
-                        <h3>Summary</h3>
+                        <h1>Summary</h1>
                         <p dangerouslySetInnerHTML={{ __html: summary }} />
                     </div>
                 )}

@@ -22,6 +22,12 @@
     font-size: 1.2rem;
 }
 
+.button-row{
+    display: flex;
+    flex-direction: row;
+    gap:20px;
+}
+
 .enter-button {
     max-width: 200px; /* Prevents too small buttons */
     padding: 10px 20px;

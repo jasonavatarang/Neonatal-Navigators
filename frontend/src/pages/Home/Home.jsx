@@ -11,9 +11,9 @@ export default function Home() {
                 <h1>What is the current gestational age of the neonate?</h1>
             </div>
             <div className="button-group">
-                <button onClick={() => navigate("/leftbranch")}>≤ 32 weeks</button>
+                <button onClick={() => navigate("/leftbranch")}>≤ 33 weeks</button>
                 <button onClick={() => navigate("/midbranch")}>33-35 weeks</button>
-                <button onClick={() => navigate("/rightbranch")}>≥ 36 weeks</button>
+                <button onClick={() => navigate("/rightbranch")}>≥ 35 weeks</button>
             </div>
         </div>
     );

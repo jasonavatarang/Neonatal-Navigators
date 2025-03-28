@@ -26,6 +26,7 @@
     width: 85%; /* Keeps it at 60% of the container width initially */
     height: auto; /* Maintains aspect ratio */
     border: 3px solid black;
+    border-radius: 5px;
 }
 
 .exclusion-criteria {
@@ -34,13 +35,15 @@
     width: 85%; /* Keeps it at 60% of the container width initially */
     height: auto; /* Maintains aspect ratio */
     border: 3px solid black;
+    border-radius: 5px;
 }
 
 .right-branch-sarnat-exam {
-    width: 90%;
+    width: 98%;
     margin-top: 3%;
     border: 3px solid black;
     background-color: white;
+    border-radius: 5px;
     align-items: flex-start;
     justify-content: center;
     font-size: 1rem;
@@ -86,9 +89,9 @@
 .radio-buttons {
     display: flex;
     justify-content: center;
-    font-size: .95rem;
+    font-size: .9rem;
     width: 50%;
-    gap: 10px;
+    gap: 5px;
     flex: 1;
 }
 
@@ -130,8 +133,8 @@
 }
 
 .highlight-option.selected {
-    background-color: #61dafbaa;
-    color: black;
+    background-color:  #0300a0;
+    color: white;
     border: 2px solid black;
 }
 
@@ -161,7 +164,7 @@
     margin: 10px;
     background-color: white;
     width: 90%;
-    margin: 0 auto;
+    margin: 10px auto;
 }
 
 .part-5-description-container {
@@ -196,6 +199,19 @@
     font-weight: bold;
 }
 
+.summary-section {
+    text-align: left; /* Ensure summary text aligns left */
+}
+
+.summary-section h3 {
+    text-align: left; /* Align the "Summary" header left */
+}
+
+.summary-section h4 {
+    text-align: left; /* Align "Signs of Encephalopathy" header left */
+    margin-left: 0; /* Remove indent to align with other text */
+    margin-bottom: 10px;
+}
 
 /* Media Queries for Mobile Devices */
 @media (max-width: 768px) {

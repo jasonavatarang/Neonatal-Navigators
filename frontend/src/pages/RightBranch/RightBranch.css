@@ -10,7 +10,7 @@
 }
 
 .right-branch-top-container {
-    width: 80%;
+    width: 70%;
     margin-top: 5%;
     border: 3px solid black;
     background-color: white;
@@ -23,17 +23,19 @@
 .protocol-image {
     margin-top: 3%;
     max-width: 100%; /* Prevents image from overflowing */
-    width: 85%; /* Keeps it at 60% of the container width initially */
+    width: 80%; /* Keeps it at 60% of the container width initially */
     height: auto; /* Maintains aspect ratio */
     border: 3px solid black;
+    border-radius: 5px;
 }
 
 .exclusion-criteria {
     margin-top: 2%;
     max-width: 100%; /* Prevents image from overflowing */
-    width: 85%; /* Keeps it at 60% of the container width initially */
+    width: 80%; /* Keeps it at 60% of the container width initially */
     height: auto; /* Maintains aspect ratio */
     border: 3px solid black;
+    border-radius: 5px;
 }
 
 .right-branch-sarnat-exam {
@@ -41,10 +43,30 @@
     margin-top: 3%;
     border: 3px solid black;
     background-color: white;
+    border-radius: 5px;
     align-items: flex-start;
     justify-content: center;
     font-size: 1rem;
     box-sizing: border-box; /* Ensures padding doesn't overflow */
+}
+
+.right-branch-sarnat-exam button{
+    margin-top: 2%;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    background-color: whitesmoke;
+    color: black;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+}
+
+.right-branch-sarnat-exam button:hover {
+    background-color: rgb(255, 115, 0);
+    border-color: black;
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
 .right-branch-sarnat-exam h2 {
@@ -86,9 +108,9 @@
 .radio-buttons {
     display: flex;
     justify-content: center;
-    font-size: .95rem;
+    font-size: .9rem;
     width: 50%;
-    gap: 10px;
+    gap: 5px;
     flex: 1;
 }
 
@@ -130,8 +152,8 @@
 }
 
 .highlight-option.selected {
-    background-color: #61dafbaa;
-    color: black;
+    background-color:  #0300a0;
+    color: white;
     border: 2px solid black;
 }
 
@@ -161,7 +183,11 @@
     margin: 10px;
     background-color: white;
     width: 90%;
-    margin: 0 auto;
+    margin: 10px auto;
+}
+
+.part-5-container h3{
+    margin-left: 25px;
 }
 
 .part-5-description-container {
@@ -173,29 +199,53 @@
 }
 
 .part-5-description-left {
-    margin: 0 0 10px 0;
+    margin: 0 0px 10px 0;
     width: 50%;
     padding: 5px 0px;
     background-color: lightgray;
     text-align: center;
     border: 2px solid black;
-    border-right: none;
     border-top: none;
+    border-left: none;
     font-weight: bold;
 }
 
 .part-5-description-right {
-    margin: 0 0 10px auto;
+    margin-left: 0%;
+    margin-bottom: 10px;
     width: 50%;
     padding: 5px 0px;
     background-color: lightgray;
     text-align: center;
     border: 2px solid black;
     border-right: none;
+    border-left: none;
     border-top: none;
     font-weight: bold;
 }
 
+.summary-section {
+    text-align: left; /* Ensure summary text aligns left */
+    border: 3px solid black; /* Add border around summary section */
+    border-radius:5px ;
+    margin: 2%;
+}
+
+.summary-section h3 {
+    text-align: left; /* Align the "Summary" header left */
+    margin-left: 10px;
+}
+
+.summary-section h4 {
+    text-align: left; /* Align "Signs of Encephalopathy" header left */
+    margin-left: 0; /* Remove indent to align with other text */
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+.summary-section p{
+    margin-left: 10px; /* Indent summary text */
+} 
 
 /* Media Queries for Mobile Devices */
 @media (max-width: 768px) {

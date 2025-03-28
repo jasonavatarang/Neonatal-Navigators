@@ -9,30 +9,34 @@
 
 .landing-page-title {
     position: absolute;
-    top: 5%;
+    top: 10%;
     font-size: 1.5rem; /* Adjust the title size */
 }
 
 .landing-page-info {
     background-color: white;
     padding: 40px 10px;
-    border: 2px solid black;
+    border: 2px solid rgb(238, 108, 2);
     border-radius: 10px;
     width: 85%;
     font-size: 1.2rem;
 }
 
 .enter-button {
-    width: 25%;
-    height: 10%;
+    max-width: 200px; /* Prevents too small buttons */
+    padding: 10px 20px;
     border-radius: 10px;
-    font-size: 1.1rem;
+    font-size: 1rem;
     cursor: pointer;
-    margin-top: 10%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
-}
+    background-color: white;
+  }
 
+.enter-button:hover  {
+    background-color: rgb(255, 115, 0);
+    border: 2px solid black;
+}
 /* Media Queries for Tablets and Small Screens */
 @media (max-width: 768px) {
     .container {
@@ -76,3 +80,12 @@
         font-size: .9rem; /* Increase button font size */
     }
 }
+
+.button-row {
+    display: flex;
+    gap: 1rem; /* Space between buttons */
+    justify-content: center;
+    flex-wrap: wrap; /* So buttons don't overflow on smaller screens */
+    margin-top: 2rem; /* Some space above buttons */
+  }
+  

@@ -19,9 +19,21 @@ export default function LandingPage() {
                 </p>
             </div>
 
-            <button className="enter-button" onClick={() => navigate("/home")}>
-            Begin neuroprotective <br /> intervention evaluation
-            </button>
+            <div className="button-row">
+                <button className="enter-button" onClick={() => navigate("/landingleftbranch")}>
+                    Learn more about GMH-IVH and bundle
+                 </button>
+
+                 <button className="enter-button" onClick={() => navigate("/home")}>
+                    Begin neuroprotective <br /> intervention evaluation
+                </button>
+
+
+                <button className="enter-button" onClick={() => navigate("/landingrightbranch")}>
+                    Learn more about HIE
+                </button>
+            </div>
+     
         </div>
     );
 }

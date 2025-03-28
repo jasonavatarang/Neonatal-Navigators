@@ -7,7 +7,7 @@ export default function MidBranch() {
             <div className="middle-branch-wide-box">
                 <h2>33 - 35 Weeks Procedure</h2>
                 <br />
-                <p>Keep the baby warm - This box should be wider!</p>
+                <p>Keep the baby warm </p>
             </div>
         </div>
     );

@@ -43,25 +43,6 @@ export default function LeftBranch() {
                 <h1>Implementation of GMH-IVH Bundle</h1>
             </div>
             <div className="info-box">
-                <h1>Pathophysiology of GMH-IVH:</h1>
-            
-                {/* Google Docs Viewer (Alternative: Use Microsoft Office) */}
-                {/* <iframe
-                    src={`https://view.officeapps.live.com/op/embed.aspx?src=${window.location.origin}/HIE pathophysiology microlecture.pptx`}
-                    width="80%" 
-                    height="600px"
-                    frameBorder="0"
-                    title="PowerPoint Slides"
-                ></iframe> */}
-                {/* Replace iframe with PdfViewerComponent */}
-                <div className="PDF-viewer">
-				    <PdfViewerComponent document={`${window.location.origin}/c.pdf`} />
-			    </div>
-                {/* <PdfViewerComponent document={`c.pptx`} /> */}
-                
-                
-            </div>
-            <div className="info-box">
                 <h1>Which neonates require a GMH-IVH bundle?</h1>
                 <ul>
                     <li>Neonates with the following conditions:
@@ -124,10 +105,6 @@ export default function LeftBranch() {
                         Avoidance of fluid boluses
                     </li>
                 </ol>
-            </div>
-            <div className="info-box">
-                <h1>NeoCare Guide (Info Unavailable currently)</h1>
-                
             </div>
             {/* Youtube Video */}
             <div className="video-container">

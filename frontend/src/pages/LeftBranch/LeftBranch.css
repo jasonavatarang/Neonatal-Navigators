@@ -12,6 +12,7 @@
 .title {
     width: 80%;
     margin-top: 5%;
+    padding: 1%;
     border: 3px solid black;
     background-color: white;
     align-items: flex-start;
@@ -45,14 +46,14 @@
 }
 
 /* Style the paragraph (p) */
-.info-box p {
+.info-box h1 {
     
 }
 
 /* Style the unordered list (ul) */
 .info-box ul {
     text-align: left;
-    margin-top: 10px;
+    
     padding-left: 20px;
     list-style-type: disc;
 }
@@ -84,7 +85,6 @@
 @media (max-width: 768px) {
     .info-box {
         font-size: 1.2rem;
-        padding: 15%;
     }
 
     .title h1 {

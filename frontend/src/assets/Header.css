@@ -1,95 +1,92 @@
-@import url('https://fonts.googleapis.com/css2?family=Boldonse&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
-
+/* Full-width deep blue header */
 .neocare-header {
+    background-color: #0000aa;
     width: 100%;
-    background-color: #0300a0;
-    color: white;
-    padding: 15px 20px;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+    padding: 0;
+    margin: 0;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
-
-.header-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1280px;
-    margin: 0 auto;
     position: relative;
 }
 
-.neocare-title {
-    font-family: 'Boldonse', sans-serif; /* Apply the cool font */
-    font-size: 1.7rem; /* Increase size for impact (was 1.5rem) */
-    text-align: left;
-    flex-grow: 1;
-    min-width: 0;
-    white-space: nowrap;
-    letter-spacing: 2px; /* Add spacing for a modern look */
-    text-transform: uppercase; /* Make it all caps for style */
+/* Inner content container */
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.hamburger-menu {
+/* Logo / title */
+.neocare-title a {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+}
+
+/* Nav links */
+.nav-links {
     display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #ffd700; /* gold hover for modern contrast */
+}
+
+/* Hamburger menu icon */
+.hamburger-menu {
+    display: none;
     flex-direction: column;
-    justify-content: space-between;
-    width: 30px;
-    height: 20px;
+    gap: 5px;
     cursor: pointer;
-    margin-right: 5%;
 }
 
 .hamburger-line {
-    width: 100%;
+    width: 25px;
     height: 3px;
     background-color: white;
-    transition: all 0.3s ease;
+    border-radius: 2px;
 }
 
-.hamburger-menu.open .hamburger-line:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-}
-
-.hamburger-menu.open .hamburger-line:nth-child(2) {
-    opacity: 0;
-}
-
-.hamburger-menu.open .hamburger-line:nth-child(3) {
-    transform: rotate(-45deg) translate(7px, -7px);
-}
-
-.dropdown-menu {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    background-color: #0300a0;
-    display: flex;
-    flex-direction: column;
-    width: 200px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-.dropdown-menu a {
-    color: white;
-    padding: 15px;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-}
-
-.dropdown-menu a:hover {
-    background-color: #02008a;
-}
-
-/* Responsive adjustments */
+/* Responsive behavior */
 @media (max-width: 768px) {
-    .neocare-title {
-        font-size: 1.2rem;
+    .nav-links.desktop {
+        display: none;
     }
 
     .hamburger-menu {
-        width: 25px;
-        height: 18px;
+        display: flex;
+    }
+
+    .nav-links.mobile {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        background-color: #0000aa;
+        padding: 20px;
+        display: none;
+    }
+
+    .nav-links.mobile.open {
+        display: flex;
+    }
+
+    .nav-links.mobile a {
+        padding: 10px 0;
+        font-size: 1.1rem;
+        text-align: center;
+        border-bottom: 1px solid rgba(255,255,255,0.2);
     }
 }

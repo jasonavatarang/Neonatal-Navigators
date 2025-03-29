@@ -8,6 +8,7 @@ import LandingRightBranch from "./pages/LandingRightBranch/LandingRightBranch";
 import LeftBranch from "./pages/LeftBranch/LeftBranch";
 import MidBranch from "./pages/MidBranch/MidBranch";
 import RightBranch from "./pages/RightBranch/RightBranch";
+import Footer from "./assets/Footer";
 
 export default function App() {
     return (
@@ -22,6 +23,7 @@ export default function App() {
             <Route path="/midbranch" element={<MidBranch />} />
             <Route path="/rightbranch" element={<RightBranch />} />
         </Routes>
+        <Footer />
         </>
     );
 }

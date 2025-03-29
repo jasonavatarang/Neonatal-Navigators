@@ -1,40 +1,42 @@
-import React from "react"; 
+import React from "react";
 import { useNavigate } from "react-router-dom";
-import "./LandingPage.css"; 
+import "./LandingPage.css";
 
 export default function LandingPage() {
     const navigate = useNavigate();
 
     return (
-        <div className="landing-page-container">
-            <div className="landing-page-title">
-                <h1>Welcome to NeoCare</h1>
-            </div>
-            <div className="landing-page-info">
-                <p>
-                    This site provides educational materials on neonatal neuroprotection, guiding you through the evaluation of neonates for appropriate neuroprotection interventions based on their gestational age.
+        <main className="landing-page">
+            <section className="landing-page-content">
+                <h1>
+                    Welcome to <span className="highlight">NeoCare</span>
+                </h1>
+                <p className="subtitle">
+                    Empowering neonatal care through evidence-based neuroprotection education.
                 </p>
-                <p>
-                Specifically, these educational materials will include best practices for preventing intraventricular hemorrhages in preterm neonates and guidelines for identifying neonates at 35 weeks’ gestation or later who may be candidates for therapeutic hypothermia.
-                </p>
-            </div>
 
-            <div className="button-row">
-                <button className="enter-button" onClick={() => navigate("/landingleftbranch")}>
-                    Learn more about GMH-IVH and bundle
-                 </button>
+                <div className="info-section">
+                    <p>
+                        Learn how to protect the most vulnerable lives with clinical tools and best practices for neonatal neuroprotection.
+                        NeoCare guides you through gestational age-based interventions to help you make informed decisions.
+                    </p>
+                    <p>
+                        Topics include intraventricular hemorrhage prevention in preterm infants and therapeutic hypothermia for neonates at 35 weeks’ gestation or later.
+                    </p>
+                </div>
 
-                 <button className="enter-button" onClick={() => navigate("/home")}>
-                    Begin neuroprotective <br /> intervention evaluation
-                </button>
-
-
-                <button className="enter-button" onClick={() => navigate("/landingrightbranch")}>
-                    Learn more about HIE
-                </button>
-            </div>
-     
-        </div>
+                <div className="button-row">
+                    <button className="primary-button" onClick={() => navigate("/landingleftbranch")}>
+                        GMH-IVH & Bundle
+                    </button>
+                    <button className="primary-button" onClick={() => navigate("/home")}>
+                        Start Evaluation
+                    </button>
+                    <button className="primary-button" onClick={() => navigate("/landingrightbranch")}>
+                        Learn about HIE
+                    </button>
+                </div>
+            </section>
+        </main>
     );
 }
-

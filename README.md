@@ -7,6 +7,13 @@ Initially, the project will be prototyped as a **private website** and later tra
 
 ---
 
+## Quickstart
+In order to start the project locally, do the following:
+open a terminal inside the "frontend" subfolder.
+Run the following commands:
+    npm install
+    npm run dev
+
 ## Features
 - **Decision Tree Navigation:** Guides users through tailored steps for neonates of varying gestational ages.
 - **Comprehensive Resources:** Includes supporting documentation, video demonstrations, and written guidelines.

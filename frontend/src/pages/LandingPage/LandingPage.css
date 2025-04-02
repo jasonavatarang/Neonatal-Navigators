@@ -1,35 +1,56 @@
-.landing-page-container {
-    text-align: center;
+.wordpress-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
+    min-height: 100vh;
+    width: 100%;
 }
 
-.landing-page-title {
-    position: absolute;
-    top: 10%;
-    font-size: 1.5rem; /* Adjust the title size */
+.wordpress-content {
+    flex: 1;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
-.landing-page-info {
-    background-color: white;
-    padding: 40px 10px;
-    border: 2px solid rgb(238, 108, 2);
-    border-radius: 10px;
-    width: 85%;
-    font-size: 1.2rem;
-}
-
-.button-row{
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.9);
     display: flex;
-    flex-direction: row;
-    gap:20px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
 }
 
-.enter-button {
-    max-width: 200px; /* Prevents too small buttons */
+.loading-spinner {
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid rgb(238, 108, 2);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.navigation-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 15px;
+    background-color: white;
+    border-top: 2px solid rgb(238, 108, 2);
+}
+
+.nav-button {
     padding: 10px 20px;
     border-radius: 10px;
     font-size: 1rem;
@@ -37,61 +58,32 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
     background-color: white;
-  }
+    border: 2px solid rgb(238, 108, 2);
+}
 
-.enter-button:hover  {
+.nav-button:hover {
     background-color: rgb(255, 115, 0);
     border: 2px solid black;
+    transform: translateY(-2px);
 }
-/* Media Queries for Tablets and Small Screens */
+
+/* Media Queries for smaller screens */
 @media (max-width: 768px) {
-    .container {
-        height: auto; /* Let the container size adjust based on content */
+    .navigation-buttons {
+        flex-wrap: wrap;
     }
-
-    .landing-page-title {
-        font-size: 1.3rem; /* Smaller title size */
-        top: 10%; /* Adjust title position */
-    }
-
-    .landing-page-info {
-        font-size: 1.1rem;
-    }
-
-    .enter-button {
-        font-size: 1rem; /* Make the button larger */
-        width: 40%; /* Adjust button width */
+    
+    .nav-button {
+        font-size: 0.9rem;
+        padding: 8px 15px;
     }
 }
 
-/* Media Queries for Mobile Devices */
 @media (max-width: 468px) {
-    .container {
-        
-    }
-
-    .landing-page-title {
-        font-size: 1.1rem; /* Even smaller title for very small screens */
-        top: 10%; /* Adjust title positioning */
-    }
-
-    .landing-page-info {
-        width: 85%;
-        
-        font-size: 1rem;
-    }
-
-    .enter-button {
-        width: 50%; /* Adjust button width */
-        font-size: .9rem; /* Increase button font size */
+    .nav-button {
+        font-size: 0.8rem;
+        padding: 6px 12px;
+        flex: 1;
+        text-align: center;
     }
 }
-
-.button-row {
-    display: flex;
-    gap: 1rem; /* Space between buttons */
-    justify-content: center;
-    flex-wrap: wrap; /* So buttons don't overflow on smaller screens */
-    margin-top: 2rem; /* Some space above buttons */
-  }
-  

@@ -1,0 +1,76 @@
+/* Reset defaults to ensure full width */
+html, body, #root {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+  }
+  
+  /* Make all containers take full width by default */
+  .container, 
+  .landing-page-container,
+  .wordpress-container,
+  div[class*="container"] {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    box-sizing: border-box !important;
+  }
+  
+  /* Ensure all iframes are full width */
+  iframe {
+    width: 100% !important;
+    max-width: 100% !important;
+    border: none !important;
+    display: block !important;
+  }
+  
+  /* Fix for potential flexbox issues */
+  .row, 
+  div[class*="row"],
+  .flex-row,
+  .flex-container {
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  
+  /* Ensure app-level routes and components take full width */
+  #root > div,
+  [data-reactroot] > div {
+    width: 100% !important;
+  }
+  
+  /* Prevent fixed-width elements common in some frameworks */
+  .container-fluid,
+  .container-xxl,
+  .container-xl,
+  .container-lg,
+  .container-md,
+  .container-sm {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  
+  /* Specific fix for the WordPress iframe */
+  .wordpress-frame {
+    width: 100vw !important; /* Use viewport width */
+    max-width: unset !important; /* Override any max-width limitations */
+    overflow: visible !important;
+    min-height: 85vh;
+  }
+  
+  /* Ensure header spans full width */
+  header, 
+  .header,
+  nav,
+  .nav {
+    width: 100% !important;
+    max-width: 100% !important;
+  }

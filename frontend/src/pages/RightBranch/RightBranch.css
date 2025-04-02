@@ -63,7 +63,7 @@
 }
 
 .right-branch-sarnat-exam button:hover {
-    background-color: rgb(255, 115, 0);
+    background-color: #6ac8ff;
     border-color: black;
     transform: scale(1.05);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
@@ -152,8 +152,8 @@
 }
 
 .highlight-option.selected {
-    background-color:  #0300a0;
-    color: white;
+    background-color:  #6ac8ff;
+    color: black;
     border: 2px solid black;
 }
 

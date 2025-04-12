@@ -3,6 +3,7 @@ import "./RightBranch.css";
 import { useNavigate } from "react-router-dom";
 
 export default function RightBranch() {
+    const [isMobileView, setIsMobileView] = useState(window.innerWidth < 900);
     const navigate = useNavigate();
     const [summary, setSummary] = useState("");
     const [Ph, setPh] = useState("");
@@ -20,9 +21,17 @@ export default function RightBranch() {
 
     // Add useEffect to scroll to bottom when summary updates
     useEffect(() => {
+        const handleResize = () => {
+            setIsMobileView(window.innerWidth < 900);
+        };
+        
+        window.addEventListener("resize", handleResize);
+
         if (summary) {
             window.scrollTo(0, document.body.scrollHeight);
         }
+
+        return () => window.removeEventListener("resize", handleResize);
     }, [summary]); // Runs whenever summary changes
 
     const calculateScore = () => {
@@ -302,19 +311,28 @@ newCriteria.signs_of_encephalopathy = numSigns;
                         <div className="part-5-description-left">
                             <p>Clinical Criteria</p>
                         </div>
-                        <div className="part-5-description-right">
-                            <p>Normal | Moderate | Severe</p> {/* Updated to reflect new order */}
+                        <div class="part-5-description-right">
+                        {isMobileView ? (
+                            <>
+                                Normal<br />
+                                Moderate<br />
+                                Severe
+                            </>
+                        ) : (
+                            "Normal | Moderate | Severe"
+                        )}
                         </div>
+
                     </div>
                     <h3>General</h3>
                     {renderRadioGroup("level_of_consciousness", "Level of Consciousness", ["Normal", "Lethargic", "Stupor/Coma"])}
                     {renderRadioGroup("spontaneous_activity", "Spontaneous Activity", ["Normal", "Decreased", "No Activity"])}
                     {renderRadioGroup("posture", "Posture", ["Normal", "Distal Flexion/Extension", "Decerebrate"])}
                     {renderRadioGroup("tone", "Tone", ["Normal", "Hypotonia/Hypertonia", "Flaccid"])}
-                    <h3>Primitive Reflexes</h3>
+                    <h3>Primitive Reflexes (Only uses most severe criteria)</h3>
                     {renderRadioGroup("suck", "Suck", ["Normal", "Weak/Bite", "Absent"])}
                     {renderRadioGroup("moro", "Moro", ["Normal", "Incomplete", "Absent"])}
-                    <h3>Autonomic System</h3>
+                    <h3>Autonomic System (Only uses most severe criteria)</h3>
                     {renderRadioGroup("pupils", "Pupils", ["Normal", "Constricted", "Skew/Non-reactive"])}
                     {renderRadioGroup("heart_rate", "Heart Rate", ["Normal", "Bradycardia", "Variable"])}
                     {renderRadioGroup("respirations", "Respirations", ["Normal", "Periodic", "Apnea/Intubated"])}

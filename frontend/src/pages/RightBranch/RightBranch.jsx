@@ -39,18 +39,18 @@ export default function RightBranch() {
             criteria.time_since_insult === "0" &&
             predictorMet &&
             hasSeizuresOrThreeSigns;
-
-            let summaryText = `The Sarnat exam results indicate that the neonate <b>${qualifies ? "qualifies" : "does not qualify"}</b> for Systemic Hypothermia.<br /><br />`;
-        
-        if (predictorMet && qualifies ) {
+    
+        let summaryText = `The Sarnat exam results indicate that the neonate <b>${qualifies ? "qualifies" : "does not qualify"}</b> for Systemic Hypothermia.<br /><br />`;
+    
+        if (predictorMet && qualifies) {
             summaryText += `The predictors that justify this are:<br />`;
-            
+    
             if (predictorA) {
                 summaryText += `• Predictor A - pH is ≤ 7.0 with base deficit ≥ 16<br />`;
             } else if (predictorB) {
                 summaryText += `• Predictor B - pH is 7.01–7.15 with base deficit 10–15.9<br />`;
             }
-        
+    
             if (predictorC) {
                 if (predictorA || predictorB) {
                     summaryText += `<b>AND</b><br />`;
@@ -59,28 +59,75 @@ export default function RightBranch() {
             } else if (!predictorA && !predictorB) {
                 summaryText += `None<br />`;
             }
+    
             summaryText += `${criteria.has_seizures === "0" ? "• The neonate has seizures<br />" : ""}`;
         }
-
+    
         summaryText += `<h4>Signs of Encephalopathy:</h4>`;
         summaryText += `${criteria.has_seizures === "0" ? "The neonate has seizures<br />" : ""}`;
+    
         const encephalopathySigns = Object.entries(criteria.encephalopathy_details)
             .filter(([_, value]) => value === "Moderate" || value === "Severe")
             .map(([key, value]) => {
                 const signName = key.replace(/_/g, " ");
-                const signValue = criteria[key] === "1" ? optionsMap[key][1] : optionsMap[key][2]; // Moderate is 1, Severe is 2
+                const signValue = optionsMap[key][value === "Moderate" ? 1 : 2];
                 return `Neonate's ${signName} is ${signValue} (${value} sign of Encephalopathy)`;
             });
-
+    
         if (encephalopathySigns.length > 0) {
-            summaryText += encephalopathySigns.join("<br />");
-        } else {
-            summaryText += "";
+            summaryText += encephalopathySigns.join("<br />") + "<br />";
         }
-
-        setSummary(summaryText); // Scroll will happen in useEffect
+    
+        // New logic for determining HIE severity
+        if (criteria.signs_of_encephalopathy >= 3) {
+            let moderateCount = 0;
+            let severeCount = 0;
+            let loc = ""; // level of consciousness
+    
+            const groups = {
+                primitive_reflexes: ["suck", "moro"],
+                autonomic_system: ["pupils", "heart_rate", "respirations"]
+            };
+    
+            let seenPrimitive = false;
+            let seenAutonomic = false;
+    
+            for (const [key, value] of Object.entries(criteria.encephalopathy_details)) {
+                if (groups.primitive_reflexes.includes(key)) {
+                    if (!seenPrimitive) {
+                        if (value === "Severe") severeCount++;
+                        else if (value === "Moderate") moderateCount++;
+                        seenPrimitive = true;
+                    }
+                } else if (groups.autonomic_system.includes(key)) {
+                    if (!seenAutonomic) {
+                        if (value === "Severe") severeCount++;
+                        else if (value === "Moderate") moderateCount++;
+                        seenAutonomic = true;
+                    }
+                } else {
+                    if (key === "level_of_consciousness") loc = value;
+                    if (value === "Severe") severeCount++;
+                    else if (value === "Moderate") moderateCount++;
+                }
+            }
+    
+            if (severeCount > moderateCount) {
+                summaryText += `<br /><b>Interpretation:</b> The neonate shows signs of <b>Severe HIE</b>.`;
+            } else if (moderateCount > severeCount) {
+                summaryText += `<br /><b>Interpretation:</b> The neonate shows signs of <b>Moderate HIE</b>.`;
+            } else {
+                if (loc === "Severe") {
+                    summaryText += `<br /><b>Interpretation:</b> The neonate shows signs of <b>Severe HIE</b> (based on tie-breaker).`;
+                } else {
+                    summaryText += `<br /><b>Interpretation:</b> The neonate shows signs of <b>Moderate HIE</b> (based on tie-breaker).`;
+                }
+            }
+        }
+    
+        setSummary(summaryText);
     };
-
+    
     // Add optionsMap
     const optionsMap = {
         level_of_consciousness: ["Normal", "Lethargic", "Stupor / Coma"],

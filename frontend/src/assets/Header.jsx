@@ -20,11 +20,10 @@ export default function Header() {
                 </div>
                 {isMenuOpen && (
                     <nav className="dropdown-menu">
-                        <Link to="/" onClick={toggleMenu}>Landing Page</Link>
-                        <Link to="/home" onClick={toggleMenu}>Home</Link>
-                        <Link to="/leftbranch" onClick={toggleMenu}>Left Branch</Link>
-                        <Link to="/midbranch" onClick={toggleMenu}>Mid Branch</Link>
-                        <Link to="/rightbranch" onClick={toggleMenu}>Right Branch</Link>
+                        <a href="https://ufneocare.wordpress.com/" target="_blank" rel="noopener noreferrer" onClick={toggleMenu}>Home</a>
+                        <Link to="/" onClick={toggleMenu}>Begin Evaluation</Link>
+                        <Link to="/leftbranch" onClick={toggleMenu}>Bundle Guide</Link>
+                        <Link to="/rightbranch" onClick={toggleMenu}>Sarnat Exam</Link>
                     </nav>
                 )}
             </div>

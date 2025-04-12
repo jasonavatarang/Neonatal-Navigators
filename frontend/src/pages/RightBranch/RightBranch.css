@@ -164,6 +164,15 @@
     margin-bottom: 10px;
 }
 
+.phInput{
+    margin-left: 17px;
+}
+
+.minusSign{
+    margin-right: 10px;
+    font-weight: bold;
+}
+
 .input-group label {
     margin: 0 20px;
     width: 25%;
@@ -252,6 +261,18 @@
 .summary-section p{
     margin-left: 30px; /* Indent summary text */
 } 
+
+.summary-button {
+    margin: 2%;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    background-color: whitesmoke;
+    color: black;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+}
 
 /* Media Queries for Mobile Devices */
 @media (max-width: 768px) {

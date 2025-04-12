@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react"; // Add useEffect to imports
 import "./RightBranch.css";
+import { useNavigate } from "react-router-dom";
 
 export default function RightBranch() {
-    const [result, setResult] = useState("");
+    const navigate = useNavigate();
     const [summary, setSummary] = useState("");
     const [Ph, setPh] = useState("");
     const [BaseDeficit, setBaseDeficit] = useState("");
@@ -58,6 +59,7 @@ export default function RightBranch() {
             } else if (!predictorA && !predictorB) {
                 summaryText += `None<br />`;
             }
+            summaryText += `${criteria.has_seizures === "0" ? "• The neonate has seizures<br />" : ""}`;
         }
 
         summaryText += `<h4>Signs of Encephalopathy:</h4>`;
@@ -116,8 +118,35 @@ export default function RightBranch() {
                     newCriteria.encephalopathy_details[name] = "Severe"; // Severe is 2
                 }
                 
-                const numSigns = Object.values(newCriteria.encephalopathy_details).filter((v) => v === "Moderate" || v === "Severe").length;
-                newCriteria.signs_of_encephalopathy = numSigns;
+               // Group logic for Primitive Reflexes and Autonomic System
+const groups = {
+    primitive_reflexes: ["suck", "moro"],
+    autonomic_system: ["pupils", "heart_rate", "respirations"]
+};
+
+const groupFlags = {
+    primitive_reflexes: false,
+    autonomic_system: false
+};
+
+const individualSigns = [];
+
+for (const [key, value] of Object.entries(newCriteria.encephalopathy_details)) {
+    if (groups.primitive_reflexes.includes(key)) {
+        groupFlags.primitive_reflexes = true;
+    } else if (groups.autonomic_system.includes(key)) {
+        groupFlags.autonomic_system = true;
+    } else {
+        individualSigns.push(key);
+    }
+}
+
+let numSigns = individualSigns.length;
+if (groupFlags.primitive_reflexes) numSigns += 1;
+if (groupFlags.autonomic_system) numSigns += 1;
+
+newCriteria.signs_of_encephalopathy = numSigns;
+
             }
             
             return newCriteria;
@@ -178,6 +207,7 @@ export default function RightBranch() {
                 <div className="input-group">
                     <label className="phLabel">Enter pH:</label>
                     <input
+                        className="phInput"
                         type="number"
                         value={Ph}
                         onChange={(e) => setPh(e.target.value)}
@@ -187,6 +217,7 @@ export default function RightBranch() {
                 </div>
                 <div className="input-group">
                     <label className="baseDeficitLabel">Enter Base Deficit:</label>
+                    <p className="minusSign"> - </p>
                     <input
                         type="number"
                         value={BaseDeficit}
@@ -241,13 +272,18 @@ export default function RightBranch() {
                     {renderRadioGroup("heart_rate", "Heart Rate", ["Normal", "Bradycardia", "Variable"])}
                     {renderRadioGroup("respirations", "Respirations", ["Normal", "Periodic", "Apnea/Intubated"])}
                 </div>
-                <button onClick={calculateScore}>Summarize Results</button>
+                <button className='summary-button' onClick={calculateScore}>Summarize Results</button>
                 {summary && (
                     <div className="summary-section">
                         <h1>Summary</h1>
                         <p dangerouslySetInnerHTML={{ __html: summary }} />
                     </div>
                 )}
+            </div>
+            <div className="button-group">
+                <button onClick={() => navigate("/")}>
+                    Return to Beginning
+                </button>
             </div>
         </div>
     );

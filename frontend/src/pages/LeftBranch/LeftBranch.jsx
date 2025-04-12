@@ -197,7 +197,7 @@ export default function LeftBranch() {
             </div>
             <div className="button-group">
                 <button onClick={() => navigate("/")}>
-                    Return to Landing Page
+                    Return to Beginning
                 </button>
             </div>
         </div>

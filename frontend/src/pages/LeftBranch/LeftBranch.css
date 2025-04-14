@@ -94,9 +94,13 @@
 
 /* Media Query for Extra Small Screens (Mobile) */
 @media (max-width: 480px) {
+    .leftbranch-container {
+        margin-left: 6%;
+    }
+    
     .info-box {
         font-size: 1rem;
-        padding: 20%;
+        padding: 10%;
     }
 
     .title h1 {

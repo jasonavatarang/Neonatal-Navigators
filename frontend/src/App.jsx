@@ -17,7 +17,8 @@ export default function App() {
             {/*<Route path="/" element={<LandingPage />} />*/}
             <Route path="/landingleftbranch" element={<LandingLeftBranch />} />
             <Route path="/landingrightbranch" element={<LandingRightBranch />} />
-            <Route path="/" element={<Home />} />
+            {/*<Route path="/" element={<Home />} />*/}
+            <Route path="/" element={<RightBranch />} />
             <Route path="/leftbranch" element={<LeftBranch />} />
             <Route path="/midbranch" element={<MidBranch />} />
             <Route path="/rightbranch" element={<RightBranch />} />

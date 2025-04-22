@@ -60,4 +60,37 @@ describe('SARNAT Exam', () => {
     expect(summary).toHaveTextContent("The neonate shows signs of Moderate encephalopathy");
 
   });
+  test('does not qualify due to insufficient predictors and mild signs', () => {
+    render(
+      <MemoryRouter>
+        <RightBranch />
+      </MemoryRouter>
+    );
+  
+    selectRadioByName("gestational_age", "Yes");
+    selectRadioByName("birth_weight", "Yes");
+    selectRadioByName("time_since_insult", "Yes");
+    selectRadioByName("acute_perinatal_event", "No");
+    selectRadioByName("apgar_assisted_ventilation", "No");
+    selectRadioByName("has_seizures", "No");
+  
+    fireEvent.change(screen.getByPlaceholderText("pH"), { target: { value: '7.25' } });
+    fireEvent.change(screen.getByPlaceholderText("Base Deficit"), { target: { value: '5.5' } });
+  
+    selectRadioByName("level_of_consciousness", "Mild - Hyper-alert");
+    selectRadioByName("spontaneous_activity", "Mild - Normal");
+    selectRadioByName("posture", "Normal - Predominantly flexed when quiet");
+    selectRadioByName("tone", "Mild - Normal or slightly increased peripheral tone");
+    selectRadioByName("suck", "Mild - Decreased");
+    selectRadioByName("moro", "Mild - Partial response, low threshold to elicit");
+    selectRadioByName("pupils", "Normal");
+    selectRadioByName("heart_rate", "Normal - 100–160");
+    selectRadioByName("respirations", "Normal - Regular respirations");
+  
+    fireEvent.click(screen.getByText("Summarize Results"));
+  
+    const summary = screen.getByTestId("summary");
+    expect(summary).toHaveTextContent("The neonate shows signs of Mild encephalopathy");
+  });
+  
 });

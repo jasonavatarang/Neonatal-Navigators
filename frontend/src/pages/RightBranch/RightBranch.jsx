@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"; // Add useEffect to imports
-import "./RightBranch.css";
+import './RightBranch.css';
 import { useNavigate } from "react-router-dom";
 
 export default function RightBranch() {
@@ -187,7 +187,7 @@ export default function RightBranch() {
         respirations: ["Normal", "Hyperventilation (RR > 60)", "Periodic or CPAP", "Apnea/Intubated"]
     };
     
-    
+
 
     const handleRadioChange = (name, value) => {
         setCriteria((prev) => {

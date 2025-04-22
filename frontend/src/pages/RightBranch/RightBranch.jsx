@@ -341,7 +341,7 @@ newCriteria.signs_of_encephalopathy = numSigns;
                 <h4>AND</h4>
                 {renderRadioGroup("apgar_assisted_ventilation", "APGAR ≤ 5 at 10 minutes or assisted ventilation at birth required ≥ 10 minutes", ["Yes", "No"])}
 
-                <h2>5. Has seizures or 3 of 6 of the following signs of encephalopathy are moderat or severe:</h2>
+                <h2>5. Has seizures or 3 of 6 of the following signs of encephalopathy are moderate or severe:</h2>
 
                 {renderRadioGroup("has_seizures", "Does the neonate have seizures?", ["Yes", "No"])}
 
@@ -432,7 +432,7 @@ newCriteria.signs_of_encephalopathy = numSigns;
                 </div>
                 <button className='summary-button' onClick={calculateSummary}>Summarize Results</button>
                 {summary && (
-                    <div className="summary-section">
+                    <div className="summary-section" data-testid="summary">
                         <h1>Summary</h1>
                         <p dangerouslySetInnerHTML={{ __html: summary }} />
                     </div>

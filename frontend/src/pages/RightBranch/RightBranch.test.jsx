@@ -42,7 +42,7 @@ describe('SARNAT Exam', () => {
     fireEvent.change(screen.getByPlaceholderText("pH"), { target: { value: '7.00' } });
     fireEvent.change(screen.getByPlaceholderText("Base Deficit"), { target: { value: '16.1' } });
 
-    ByName("level_of_consciousness", "Moderate - Lethargic");
+    selectRadioByName("level_of_consciousness", "Moderate - Lethargic");
     selectRadioByName("spontaneous_activity", "Mild - Normal");
     selectRadioByName("posture", "Severe - Decerebrate");
     selectRadioByName("tone", "Moderate - Hypotonia (focal/general), hypertonia (focal/truncal)");
@@ -55,7 +55,7 @@ describe('SARNAT Exam', () => {
 
 
     fireEvent.click(screen.getByText("Summarize Results"));
-
+    
     const summary = screen.getByTestId("summary");
     expect(summary).toHaveTextContent("The neonate shows signs of Moderate encephalopathy");
 

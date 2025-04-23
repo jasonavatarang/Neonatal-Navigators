@@ -92,5 +92,63 @@ describe('SARNAT Exam', () => {
     const summary = screen.getByTestId("summary");
     expect(summary).toHaveTextContent("The neonate shows signs of Mild encephalopathy");
   });
+  test('qualifies via Predictor A with 3 moderate signs (Moderate encephalopathy)', () => {
+    render(
+      <MemoryRouter>
+        <RightBranch />
+      </MemoryRouter>
+    );
   
+    selectRadioByName("gestational_age", "Yes");
+    selectRadioByName("birth_weight", "Yes");
+    selectRadioByName("time_since_insult", "Yes");
+    selectRadioByName("acute_perinatal_event", "Yes");
+    selectRadioByName("apgar_assisted_ventilation", "Yes");
+    selectRadioByName("has_seizures", "No");
+  
+    fireEvent.change(screen.getByPlaceholderText("pH"), { target: { value: '7.00' } });
+    fireEvent.change(screen.getByPlaceholderText("Base Deficit"), { target: { value: '16.1' } });
+  
+    // 3 moderate signs
+    selectRadioByName("level_of_consciousness", "Moderate - Lethargic");
+    selectRadioByName("posture", "Moderate - Distal flexion, complete extension, frog leg posture");
+    selectRadioByName("tone", "Moderate - Hypotonia (focal/general), hypertonia (focal/truncal)");
+  
+    fireEvent.click(screen.getByText("Summarize Results"));
+  
+    const summary = screen.getByTestId("summary");
+    expect(summary).toHaveTextContent("The neonate shows signs of Moderate encephalopathy");
+  });
+  test('does not qualify – only mild signs and fails predictors', () => {
+    render(
+      <MemoryRouter>
+        <RightBranch />
+      </MemoryRouter>
+    );
+  
+    selectRadioByName("gestational_age", "Yes");
+    selectRadioByName("birth_weight", "Yes");
+    selectRadioByName("time_since_insult", "Yes");
+    selectRadioByName("acute_perinatal_event", "No");
+    selectRadioByName("apgar_assisted_ventilation", "No");
+    selectRadioByName("has_seizures", "No");
+  
+    fireEvent.change(screen.getByPlaceholderText("pH"), { target: { value: '7.25' } });
+    fireEvent.change(screen.getByPlaceholderText("Base Deficit"), { target: { value: '5.2' } });
+  
+    selectRadioByName("level_of_consciousness", "Mild - Hyper-alert, jitteriness, high-pitched cry, inconsolable");
+    selectRadioByName("spontaneous_activity", "Mild - Normal");
+    selectRadioByName("posture", "Mild - Mild flexion of distal joints");
+    selectRadioByName("tone", "Mild - Normal or slightly increased peripheral tone");
+    selectRadioByName("suck", "Mild - Decreased");
+    selectRadioByName("moro", "Mild - Partial response, low threshold to elicit");
+    selectRadioByName("pupils", "Mild - Mydriasis");
+    selectRadioByName("heart_rate", "Mild - Tachycardia (>160)");
+    selectRadioByName("respirations", "Mild - Hyperventilation (RR > 60)");
+  
+    fireEvent.click(screen.getByText("Summarize Results"));
+  
+    const summary = screen.getByTestId("summary");
+    expect(summary).toHaveTextContent("The neonate shows signs of Mild");
+  });
 });

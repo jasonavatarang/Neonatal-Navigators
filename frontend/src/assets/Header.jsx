@@ -12,7 +12,7 @@ export default function Header() {
     return (
         <header className="neocare-header">
             <div className="header-content">
-                <div className="neocare-title">Simple Sarnat Exam</div>
+                <div className="neocare-title">Interactive Sarnat Exam</div>
                 <div className={`hamburger-menu ${isMenuOpen ? 'open' : ''}`} onClick={toggleMenu}>
                     <div className="hamburger-line"></div>
                     <div className="hamburger-line"></div>

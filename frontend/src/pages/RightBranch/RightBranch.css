@@ -15,6 +15,7 @@
     width: 89%;
     border: 3px solid black;
     border-radius: 5px;
+    background-color: white;
 }
 
 .image-header h1{
@@ -25,6 +26,7 @@
 }
 
 .exclusion-criteria {
+    margin-top: 0%;
     width: 100%;
     margin-bottom:0px; 
     height: auto; 
@@ -254,6 +256,7 @@
 .summary-button {
     margin: 2%;
     padding: 10px 20px;
+    border: 2px solid black;
     border-radius: 5px;
     font-size: 1.2rem;
     cursor: pointer;
@@ -273,7 +276,10 @@
     width: 92%;
     margin: 10px auto;
     margin-top: 3%;
-    font-size: 600;
+}
+
+.referal-center-container h1{
+    font-size: large;
 }
 
 /* Back to site button*/
@@ -283,8 +289,9 @@
 
 .button-group button{
     margin: 2%;
-    width: 30%;
+    width: 40%;
     padding: 10px 20px;
+    border: 2px solid black;
     border-radius: 5px;
     font-size: 1.2rem;
     cursor: pointer;
@@ -294,7 +301,23 @@
     transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
 }
 
+.button-group button:hover {
+    background-color: #6ac8ff;
+    border-color: black;
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
 @media (max-width: 900px) {
+
+    .image-header h1{
+        font-size: 1.3rem;
+    }
+
+    .sarnat-exam-header h1{
+        font-size: 1.3rem;
+    }
+
     .radio-group {
         flex-direction: column;
         align-items: flex-start;
@@ -345,6 +368,10 @@
     .input-group input {
         width: 25%;
     }
+
+    .button-group button{
+        width: 80%;
+    }
 }
 
 
@@ -353,12 +380,16 @@
         margin-left: 6%;
     }
     
-    .right-branch-top-container {
-        font-size: .9rem;
+    .image-header h1{
+        font-size: 1rem;
     }
 
     .right-branch-sarnat-exam {
         width: 95%;
+    }
+
+    .sarnat-exam-header h1{
+        font-size: 1rem;
     }
 
     .radio-group p {

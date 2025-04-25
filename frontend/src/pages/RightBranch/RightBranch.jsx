@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"; // Add useEffect to imports
-import "./RightBranch.css";
+import './RightBranch.css';
 import { useNavigate } from "react-router-dom";
 
 export default function RightBranch() {
@@ -19,17 +19,10 @@ export default function RightBranch() {
 
     // Add useEffect to scroll to bottom when summary updates
     useEffect(() => {
-        const handleResize = () => {
-            setIsMobileView(window.innerWidth < 900);
-        };
-        
-        window.addEventListener("resize", handleResize);
-
         if (summary) {
             window.scrollTo(0, document.body.scrollHeight);
         }
 
-        return () => window.removeEventListener("resize", handleResize);
     }, [summary]); // Runs whenever summary changes
 
     const calculateSummary = () => {
@@ -73,7 +66,7 @@ export default function RightBranch() {
         const qualifies =
             criteria.gestational_age === "0" &&
             criteria.birth_weight === "0" &&
-            criteria.neonate_age === "0" &&
+            criteria.time_since_insult === "0" &&
             predictorMet &&
             hasSeizuresOrThreeSigns;
     
@@ -155,6 +148,8 @@ export default function RightBranch() {
     
             if (criteria.has_seizures === "0") {
                 if (allMildOrNormal) {
+                    summaryText += `<br /><b>Interpretation:</b> The neonate shows signs of <b>Mild</b> encephalopathy.`;
+                } else {
                     summaryText += `<br /><b>Interpretation:</b> The neonate shows signs of <b>Moderate</b> encephalopathy.`;
                 }
             } else if (criteria.signs_of_encephalopathy > 0) {
@@ -183,7 +178,7 @@ export default function RightBranch() {
         respirations: ["Normal", "Hyperventilation (RR > 60)", "Periodic or CPAP", "Apnea/Intubated"]
     };
     
-    
+
 
     const handleRadioChange = (name, value) => {
         setCriteria((prev) => {
@@ -282,12 +277,6 @@ newCriteria.signs_of_encephalopathy = numSigns;
 
     return (
         <div className="right-branch-container">
-             <div className="right-branch-images">
-                <div className="image-header">
-                    <h1>Before starting the Sarnat exam, please ensure that the neonate does not meet any of the exclusion criteria.</h1>
-                </div>
-                <img className="exclusion-criteria" src="/Exclusion Criteria.png" alt="HIE Hypothermia Exclusion Criteria" />
-            </div>
             <div className="right-branch-sarnat-exam">
                 <div className="sarnat-exam-header">
                     <h1> To qualify for Systemic Hypothermia, a neonate must meet all 5 criteria of the Sarnat exam.</h1>
@@ -302,9 +291,9 @@ newCriteria.signs_of_encephalopathy = numSigns;
                 <h2>3. Time Since Insult</h2>
                 {renderRadioGroup("time_since_insult", "Has it been ≤ 6 hours since the last insult occurred?", ["Yes", "No"])}
                 
-                <h2>4. ONE OR MORE Predictors of Severe HIE (Enter pH and base deficit)</h2>
+                <h2>4. ONE OR MORE Predictors of Severe HIE</h2>
                 <div className="input-group">
-                    <label className="phLabel"><strong>pH:</strong></label>
+                    <label className="phLabel">Enter pH:</label>
                     <input
                         className="phInput"
                         type="number"
@@ -315,7 +304,7 @@ newCriteria.signs_of_encephalopathy = numSigns;
                     />
                 </div>
                 <div className="input-group">
-                    <label className="baseDeficitLabel"><strong>Base Deficit:</strong></label>
+                    <label className="baseDeficitLabel">Enter Base Deficit:</label>
                     <p className="minusSign"> - </p>
                     <input
                         type="number"
@@ -351,7 +340,10 @@ newCriteria.signs_of_encephalopathy = numSigns;
 
                 <div className="part-5-container">
                     <div className="part-5-description-container">
-                        <p>Clinical Criteria</p>
+                        <div className="part-5-description-left">
+                            <p>Clinical Criteria</p>
+                        </div>
+
                     </div>
                     <h3>General</h3>
                     {renderRadioGroup("level_of_consciousness", "Level of Consciousness", [
@@ -422,7 +414,7 @@ newCriteria.signs_of_encephalopathy = numSigns;
                 </div>
                 <button className='summary-button' onClick={calculateSummary}>Summarize Results</button>
                 {summary && (
-                    <div className="summary-section">
+                    <div className="summary-section" data-testid="summary">
                         <h1>Summary</h1>
                         <p dangerouslySetInnerHTML={{ __html: summary }} />
                     </div>
@@ -431,7 +423,7 @@ newCriteria.signs_of_encephalopathy = numSigns;
                 <div className="referal-center-container">
                         <h1><strong>Call referal center for further guidence</strong></h1>
                 </div>
-            )}
+                )}
             </div>
             <div className="button-group">
                 <button 

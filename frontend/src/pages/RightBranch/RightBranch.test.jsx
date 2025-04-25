@@ -39,8 +39,8 @@ describe('SARNAT Exam', () => {
     selectRadioByName("apgar_assisted_ventilation", "Yes");
     selectRadioByName("has_seizures", "Yes");
 
-    fireEvent.change(screen.getByPlaceholderText("pH"), { target: { value: '7.00' } });
-    fireEvent.change(screen.getByPlaceholderText("Base Deficit"), { target: { value: '16.1' } });
+    fireEvent.change(screen.getByPlaceholderText("pH (e.g. 7.2)"), { target: { value: '7.00' } });
+    fireEvent.change(screen.getByPlaceholderText("Base Deficit (e.g. 15.2)"), { target: { value: '16.1' } });
 
     selectRadioByName("level_of_consciousness", "Moderate - Lethargic");
     selectRadioByName("spontaneous_activity", "Mild - Normal");
@@ -74,8 +74,8 @@ describe('SARNAT Exam', () => {
     selectRadioByName("apgar_assisted_ventilation", "No");
     selectRadioByName("has_seizures", "No");
   
-    fireEvent.change(screen.getByPlaceholderText("pH"), { target: { value: '7.25' } });
-    fireEvent.change(screen.getByPlaceholderText("Base Deficit"), { target: { value: '5.5' } });
+    fireEvent.change(screen.getByPlaceholderText("pH (e.g. 7.2)"), { target: { value: '7.25' } });
+    fireEvent.change(screen.getByPlaceholderText("Base Deficit (e.g. 15.2)"), { target: { value: '5.5' } });
   
     selectRadioByName("level_of_consciousness", "Mild - Hyper-alert");
     selectRadioByName("spontaneous_activity", "Mild - Normal");
@@ -106,8 +106,8 @@ describe('SARNAT Exam', () => {
     selectRadioByName("apgar_assisted_ventilation", "Yes");
     selectRadioByName("has_seizures", "No");
   
-    fireEvent.change(screen.getByPlaceholderText("pH"), { target: { value: '7.00' } });
-    fireEvent.change(screen.getByPlaceholderText("Base Deficit"), { target: { value: '16.1' } });
+    fireEvent.change(screen.getByPlaceholderText("pH (e.g. 7.2)"), { target: { value: '7.00' } });
+    fireEvent.change(screen.getByPlaceholderText("Base Deficit (e.g. 15.2)"), { target: { value: '16.1' } });
   
     // 3 moderate signs
     selectRadioByName("level_of_consciousness", "Moderate - Lethargic");
@@ -133,8 +133,8 @@ describe('SARNAT Exam', () => {
     selectRadioByName("apgar_assisted_ventilation", "No");
     selectRadioByName("has_seizures", "No");
   
-    fireEvent.change(screen.getByPlaceholderText("pH"), { target: { value: '7.25' } });
-    fireEvent.change(screen.getByPlaceholderText("Base Deficit"), { target: { value: '5.2' } });
+    fireEvent.change(screen.getByPlaceholderText("pH (e.g. 7.2)"), { target: { value: '7.25' } });
+    fireEvent.change(screen.getByPlaceholderText("Base Deficit (e.g. 15.2)"), { target: { value: '5.2' } });
   
     selectRadioByName("level_of_consciousness", "Mild - Hyper-alert, jitteriness, high-pitched cry, inconsolable");
     selectRadioByName("spontaneous_activity", "Mild - Normal");

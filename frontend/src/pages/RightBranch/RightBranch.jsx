@@ -3,8 +3,6 @@ import "./RightBranch.css";
 import { useNavigate } from "react-router-dom";
 
 export default function RightBranch() {
-    const [isMobileView, setIsMobileView] = useState(window.innerWidth < 900);
-    const navigate = useNavigate();
     const [summary, setSummary] = useState("");
     const [Ph, setPh] = useState("");
     const [BaseDeficit, setBaseDeficit] = useState("");
@@ -75,7 +73,7 @@ export default function RightBranch() {
         const qualifies =
             criteria.gestational_age === "0" &&
             criteria.birth_weight === "0" &&
-            criteria.time_since_insult === "0" &&
+            criteria.neonate_age === "0" &&
             predictorMet &&
             hasSeizuresOrThreeSigns;
     
@@ -157,8 +155,6 @@ export default function RightBranch() {
     
             if (criteria.has_seizures === "0") {
                 if (allMildOrNormal) {
-                    summaryText += `<br /><b>Interpretation:</b> The neonate shows signs of <b>Mild</b> encephalopathy.`;
-                } else {
                     summaryText += `<br /><b>Interpretation:</b> The neonate shows signs of <b>Moderate</b> encephalopathy.`;
                 }
             } else if (criteria.signs_of_encephalopathy > 0) {
@@ -286,8 +282,16 @@ newCriteria.signs_of_encephalopathy = numSigns;
 
     return (
         <div className="right-branch-container">
+             <div className="right-branch-images">
+                <div className="image-header">
+                    <h1>Before starting the Sarnat exam, please ensure that the neonate does not meet any of the exclusion criteria.</h1>
+                </div>
+                <img className="exclusion-criteria" src="/Exclusion Criteria.png" alt="HIE Hypothermia Exclusion Criteria" />
+            </div>
             <div className="right-branch-sarnat-exam">
-                <h2>A neonate must meet all 5 criteria to qualify for Systemic Hypothermia</h2>
+                <div className="sarnat-exam-header">
+                    <h1> To qualify for Systemic Hypothermia, a neonate must meet all 5 criteria of the Sarnat exam.</h1>
+                </div>
                 <br></br>
                 <h2>1. Gestational Age</h2>
                 {renderRadioGroup("gestational_age", "Is the gestational age of the neonate ≥ 35 weeks?", ["Yes", "No"])}
@@ -298,9 +302,9 @@ newCriteria.signs_of_encephalopathy = numSigns;
                 <h2>3. Time Since Insult</h2>
                 {renderRadioGroup("time_since_insult", "Has it been ≤ 6 hours since the last insult occurred?", ["Yes", "No"])}
                 
-                <h2>4. ONE OR MORE Predictors of Severe HIE</h2>
+                <h2>4. ONE OR MORE Predictors of Severe HIE (Enter pH and base deficit)</h2>
                 <div className="input-group">
-                    <label className="phLabel">Enter pH:</label>
+                    <label className="phLabel"><strong>pH:</strong></label>
                     <input
                         className="phInput"
                         type="number"
@@ -311,7 +315,7 @@ newCriteria.signs_of_encephalopathy = numSigns;
                     />
                 </div>
                 <div className="input-group">
-                    <label className="baseDeficitLabel">Enter Base Deficit:</label>
+                    <label className="baseDeficitLabel"><strong>Base Deficit:</strong></label>
                     <p className="minusSign"> - </p>
                     <input
                         type="number"
@@ -341,27 +345,13 @@ newCriteria.signs_of_encephalopathy = numSigns;
                 <h4>AND</h4>
                 {renderRadioGroup("apgar_assisted_ventilation", "APGAR ≤ 5 at 10 minutes or assisted ventilation at birth required ≥ 10 minutes", ["Yes", "No"])}
 
-                <h2>5. Has seizures or 3 of 6 of the following signs of encephalopathy are moderat or severe:</h2>
+                <h2>5. Has seizures or 3 of 6 of the following signs of encephalopathy are moderate or severe:</h2>
 
                 {renderRadioGroup("has_seizures", "Does the neonate have seizures?", ["Yes", "No"])}
 
                 <div className="part-5-container">
                     <div className="part-5-description-container">
-                        <div className="part-5-description-left">
-                            <p>Clinical Criteria</p>
-                        </div>
-                        <div class="part-5-description-right">
-                        {isMobileView ? (
-                            <>
-                                Normal<br />
-                                Moderate<br />
-                                Severe
-                            </>
-                        ) : (
-                            "Normal | Moderate | Severe"
-                        )}
-                        </div>
-
+                        <p>Clinical Criteria</p>
                     </div>
                     <h3>General</h3>
                     {renderRadioGroup("level_of_consciousness", "Level of Consciousness", [
@@ -437,6 +427,11 @@ newCriteria.signs_of_encephalopathy = numSigns;
                         <p dangerouslySetInnerHTML={{ __html: summary }} />
                     </div>
                 )}
+                {summary && (
+                <div className="referal-center-container">
+                        <h1><strong>Call referal center for further guidence</strong></h1>
+                </div>
+            )}
             </div>
             <div className="button-group">
                 <button 

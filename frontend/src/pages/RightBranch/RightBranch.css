@@ -4,41 +4,34 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 100%; /* Fixes overflow on large screens */
-    max-width: 1200px; /* Prevents it from becoming too wide */
-    margin: 0 auto; /* Centers the content */
+    width: 100%; 
+    max-width: 1200px; 
+    margin: 0 auto; 
 }
 
-.right-branch-top-container {
-    width: 80%;
-    margin-top: 5%;
-    padding: 10px;
-    border: 3px solid black;
-    background-color: white;
-    align-items: flex-start;
-    justify-content: center;
-    font-size: 1.5rem;
-    box-sizing: border-box; /* Ensures padding doesn't overflow */
-}
-
-.protocol-image {
-    margin-top: 3%;
-    max-width: 100%; /* Prevents image from overflowing */
-    width: 80%; /* Keeps it at 60% of the container width initially */
-    height: auto; /* Maintains aspect ratio */
+/* Images Section*/
+.right-branch-images{
+    margin-top: 4%;
+    width: 89%;
     border: 3px solid black;
     border-radius: 5px;
+}
+
+.image-header h1{
+    margin-top: 0px;
+    padding: 15px;
+    background-color: #79d9ff;
+    border-bottom: 2px solid black;
 }
 
 .exclusion-criteria {
-    margin-top: 2%;
-    max-width: 100%; /* Prevents image from overflowing */
-    width: 80%; /* Keeps it at 60% of the container width initially */
-    height: auto; /* Maintains aspect ratio */
-    border: 3px solid black;
-    border-radius: 5px;
+    width: 100%;
+    margin-bottom:0px; 
+    height: auto; 
+    
 }
 
+/* Sarnat Exam Section*/
 .right-branch-sarnat-exam {
     width: 90%;
     margin-top: 3%;
@@ -48,7 +41,76 @@
     align-items: flex-start;
     justify-content: center;
     font-size: 1rem;
-    box-sizing: border-box; /* Ensures padding doesn't overflow */
+    box-sizing: border-box;
+}
+
+.sarnat-exam-header h1{
+    margin-top: 0px;
+    background-color: #79d9ff;
+    padding: 15px;
+    border-bottom: 2px solid black;
+}
+
+.right-branch-sarnat-exam h2 {
+    text-align: left;
+    margin-left: 5px;
+}
+
+.right-branch-sarnat-exam h3 {
+    font-size: x-large;
+    text-align: left;
+    margin-left: 20px;
+}
+
+.right-branch-sarnat-exam h4 {
+    text-align: left;
+    margin-left: 30px;
+}
+
+.radio-group {
+    display: flex;
+    flex-direction: column; 
+    gap: 10px;
+    margin: 10px 5px 10px 20px;
+}
+
+.radio-group p {
+    background-color: lightgray;
+    margin: 0px 2px;
+    border: 2px solid black;
+    border-radius: 2px;
+    font-weight: bold; 
+    flex: 1;
+    text-align: left;
+    padding: 8px 10px; 
+    width: 80%; 
+    word-wrap: break-word; 
+}
+
+
+.radio-buttons {
+    display: flex;
+    flex-direction: column;
+    font-size: .9rem;
+    width: 100%;
+    gap: 5px;
+    flex: 1;
+}
+
+.radio-buttons label {
+    display: inline-flex;
+    align-items: center;
+    justify-content: left;
+}
+
+.radio-label-text {
+    text-align: left;
+    padding-left: 1%; 
+}
+
+
+.radio-buttons input[type="radio"] {
+    margin: 0px 10px;;
 }
 
 .right-branch-sarnat-exam button{
@@ -70,68 +132,39 @@
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
-.right-branch-sarnat-exam h2 {
-    text-align: left;
-    margin-left: 5px;
-}
-
-.right-branch-sarnat-exam h3 {
-    font-size: x-large;
-    text-align: left;
-    margin-left: 20px;
-}
-
-.right-branch-sarnat-exam h4 {
-    text-align: left;
-    margin-left: 30px;
-}
-
-.radio-group {
+/*Input for Question 4*/
+.input-group {
     display: flex;
-    flex-direction: column; /* Always stack items in column */
-    gap: 10px;
-    margin: 10px 5px 10px 20px;
-}
-
-.radio-group p {
-    background-color: lightgray;
-    margin: 0px 2px;
-    border: 2px solid black;
-    border-radius: 2px;
-    font-weight: bold; 
-    flex: 1;
-    text-align: left;
-    padding: 8px 10px; /* Top and bottom padding only */
-    width: 80%; /* Restrict label width to half the screen */
-    word-wrap: break-word; /* Break long words to avoid overflow */
-}
-
-
-.radio-buttons {
-    display: flex;
-    flex-direction: column; /* Always stack items in column */
-    font-size: .9rem;
-    width: 100%;
-    gap: 5px;
-    flex: 1;
-}
-
-.radio-buttons label {
-    display: inline-flex;
     align-items: center;
-    justify-content: left;
+    justify-content: flex-start;
+    margin-bottom: 10px;
 }
 
-.radio-label-text {
+.phInput{
+    margin-left: 17px;
+}
+
+.minusSign{
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.input-group label {
+    font-size: large;
+    margin: 0 20px;
+    width: 25%;
     text-align: left;
-    padding-left: 1%;   /* Indent all lines */
 }
 
-
-.radio-buttons input[type="radio"] {
-    margin: 0px 10px;;
+.input-group input {
+    width: 15%;
+    padding: 5px;
+    border: 2px solid black;
+    box-sizing: border-box;
+    
 }
 
+/* Yes and No boxes in question 4*/
 .highlight-group {
     margin-bottom: 10px;
 }
@@ -158,39 +191,9 @@
 }
 
 .highlight-option.selected {
-    background-color:  #6ac8ff;
+    background-color:  #79d9ff;
     color: black;
     border: 2px solid black;
-}
-
-.input-group {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    margin-bottom: 10px;
-}
-
-.phInput{
-    margin-left: 17px;
-}
-
-.minusSign{
-    margin-right: 10px;
-    font-weight: bold;
-}
-
-.input-group label {
-    margin: 0 20px;
-    width: 25%;
-    text-align: left;
-}
-
-.input-group input {
-    width: 15%;
-    padding: 5px;
-    border: 2px solid black;
-    box-sizing: border-box;
-    
 }
 
 .part-5-container {
@@ -207,70 +210,45 @@
 }
 
 .part-5-description-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 10px;
-    width: 100%;
-}
-
-.part-5-description-left {
     margin: 0 0px 10px 0;
-    width: 50%;
+    width: 100%;
     padding: 5px 0px;
     background-color: lightgray;
     text-align: center;
     border: 2px solid black;
     border-top: none;
     border-left: none;
-    font-weight: bold;
-}
-
-.part-5-description-right {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: 0%;
-    margin-bottom: 10px;
-    height: 50px;
-    width: 50%;
-    padding: 5px 0px;
-    background-color: lightgray;
-    border: 2px solid black;
     border-right: none;
-    border-left: none;
-    border-top: none;
     font-weight: bold;
 }
-
 
 .summary-section {
-    text-align: left; /* Ensure summary text aligns left */
-    border: 3px solid black; /* Add border around summary section */
+    text-align: left; 
+    border: 3px solid black; 
     border-radius:5px ;
     margin: 2%;
 }
 
 .summary-section h1 {
-    text-align: center; /* Align the "Summary" header left */
+    text-align: center; 
     margin-bottom: 20px;
     
 }
 
 .summary-section h3 {
-    text-align: left; /* Align the "Summary" header left */
+    text-align: left; 
     margin-left: 10px;
 }
 
 .summary-section h4 {
-    text-align: left; /* Align "Signs of Encephalopathy" header left */
-    margin-left: -10px; /* Remove indent to align with other text */
+    text-align: left; 
+    margin-left: -10px; 
     margin-bottom: 10px;
    
 }
 
 .summary-section p{
-    margin-left: 30px; /* Indent summary text */
+    margin-left: 30px; 
 } 
 
 .summary-button {
@@ -285,8 +263,35 @@
     transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
 }
 
+/* Referal center section*/
+.referal-center-container{
+    border: 3px solid black;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+    background-color: #79d9ff;
+    width: 92%;
+    margin: 10px auto;
+    margin-top: 3%;
+    font-size: 600;
+}
+
+/* Back to site button*/
 .button-group{
-    margin-bottom: 5%;
+    width: 100%;
+}
+
+.button-group button{
+    margin: 2%;
+    width: 30%;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    background-color: whitesmoke;
+    color: black;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
 }
 
 @media (max-width: 900px) {
@@ -322,7 +327,7 @@
     }
 
     .part-5-description-left {
-        border-top: 2px solid black; /* optional: reintroduce top border if needed */
+        border-top: 2px solid black; 
     }
 
     .right-branch-sarnat-exam {
@@ -334,7 +339,7 @@
 
     .radio-label-text {
         text-align: left;
-        padding-left: 1%;   /* Indent all lines */
+        padding-left: 1%;  
     }
 
     .input-group input {
@@ -389,4 +394,13 @@
     .summary-section p{
         font-size: .8rem;
     } 
+
+    .referal-center-container{
+        width: 89%;
+        font-size: .8rem;
+    }
+
+    .button-group button{
+        width: 80%;
+    }
 }

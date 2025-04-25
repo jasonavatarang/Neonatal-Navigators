@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"; // Add useEffect to imports
-import "./RightBranch.css";
+import './RightBranch.css';
 import { useNavigate } from "react-router-dom";
 
 export default function RightBranch() {
@@ -183,7 +183,7 @@ export default function RightBranch() {
         respirations: ["Normal", "Hyperventilation (RR > 60)", "Periodic or CPAP", "Apnea/Intubated"]
     };
     
-    
+
 
     const handleRadioChange = (name, value) => {
         setCriteria((prev) => {
@@ -422,7 +422,7 @@ newCriteria.signs_of_encephalopathy = numSigns;
                 </div>
                 <button className='summary-button' onClick={calculateSummary}>Summarize Results</button>
                 {summary && (
-                    <div className="summary-section">
+                    <div className="summary-section" data-testid="summary">
                         <h1>Summary</h1>
                         <p dangerouslySetInnerHTML={{ __html: summary }} />
                     </div>
